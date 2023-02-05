@@ -29,12 +29,16 @@ public class Account {
     //MODIFIES: animal
     //EFFECTS: donate the given amount to the given animal
     public void donate(int amount, Animal animal) {
-        //stub
+        animal.addDonation(amount);
+        this.addToDonatedTo(animal);
     }
 
     //REQUIRES: card should be a string with 16 digits and a space character separating every 4 digits.
     //EFFECTS: returns true if the given username and card matches the user's fields
     public boolean validUser(String username, String card){
+        if((this.username == username) && (this.card == card)){
+            return true;
+        }
         return false;
     }
 
@@ -42,42 +46,47 @@ public class Account {
     //MODIFIES: this
     //EFFECTS: adds the given animal to the account's donated to lists
     public void addToDonatedTo(Animal animal) {
-        //stub
+        if (!((this.donatedto).contains(animal))){
+            donatedto.add(animal);
+        }
     }
 
     //MODIFIES: this
     //EFFECTS: adds the given animal to the account's favourites list
     public void addToFavorites(Animal animal) {
-        //stub
+        (this.favorites).add(animal);
     }
 
     //REQUIRES: the account's favorite list is not empty
     //MODIFIES: this
     //EFFECTS: removes the given animal from the account's favorites list.
     public void removeFromFavorites(Animal animal){
-        //stub
+        favorites.remove(animal);
     }
 
     //REQUIRES: card should be a string with 16 digits and a space character separating every 4 digits.
     //EFFECTS: returns true if the given card begins with 4.
     public boolean hasValidCard(String card){
+        if('4' == (card.charAt(0))){
+            return true;
+        }
         return false;
     }
 
     public String getUsername() {
-        return null;
+        return this.username;
     }
 
     public String getCard() {
-        return null;
+        return this.card;
     }
 
     public ArrayList<Animal> getFavorites() {
-        return null;
+        return this.favorites;
     }
 
     public ArrayList<Animal> getDonatedTo(){
-        return null;
+        return this.donatedto;
     }
 
 }

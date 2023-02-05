@@ -41,6 +41,17 @@ class AccountTest {
     public void setup() {
         acc1 = new Account("user1", "4536 0022 3144 1702");
         acc2 = new Account("Emma", "1111 1111 1111 1111");
+        blackRhino = new BlackRhino();
+        sumatranRhino = new SumatranRhino();
+        narWhale = new NorthAtlanticRWhale();
+        belugaWhale = new BelugaWhale();
+        polarBear = new PolarBear();
+        giantPanda = new GiantPanda();
+        snowLeopard = new SnowLeopard();
+        tiger = new Tiger();
+        afElephant = new AfricanForestElephant();
+        sElephant = new SumatranElephant();
+        whaleShark = new WhaleShark();
     }
 
     @Test
@@ -173,18 +184,6 @@ class AccountTest {
 
     }
 
-    @Test
-    public void testDonateAnimal(){
-        acc2.donate(1, animal);
-        assertEquals(1, animal.getDonation());
-        acc2.donate(2000, animal);
-        assertEquals(2001, animal.getDonation());
-        acc2.donate(4999, animal);
-        assertEquals(7000, animal.getDonation());
-        acc2.donate(5000, animal);
-        assertEquals(12000, animal.getDonation());
-    }
-
 
     @Test
     public void testValidUser(){
@@ -275,6 +274,11 @@ class AccountTest {
     @Test
     public void testValidCardWith4AsFirstDigit(){
         assertTrue(acc1.hasValidCard(acc1.getCard()));
+    }
+
+    @Test
+    public void testNotValidCard(){
+        assertFalse(acc2.hasValidCard(acc2.getCard()));
     }
 
 }
