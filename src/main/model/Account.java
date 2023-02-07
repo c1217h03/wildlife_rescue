@@ -10,14 +10,14 @@ public class Account {
     private ArrayList<Animal> favorites;
     private ArrayList<Animal> donatedto;
 
-    public static int MAX_DONATION = 5000;
-    public static int MIN_DONATION = 1;
+    private static int MAX_DONATION = 5000;
+    private static int MIN_DONATION = 1;
 
     //EFFECTS: create a new Account object.
     //         sets the username with the given name.
     //         sets the user's card with the given card.
     //         initializes favorites and dontatedto lists to new ArrayLists.
-    public  Account(String username, String card){
+    public Account(String username, String card) {
         this.username = username;
         this.card = card;
         this.favorites = new ArrayList<Animal>();
@@ -35,8 +35,8 @@ public class Account {
 
     //REQUIRES: card should be a string with 16 digits and a space character separating every 4 digits.
     //EFFECTS: returns true if the given username and card matches the user's fields
-    public boolean validUser(String username, String card){
-        if((this.username == username) && (this.card == card)){
+    public boolean validUser(String username, String card) {
+        if ((this.username == username) && (this.card == card)) {
             return true;
         }
         return false;
@@ -46,7 +46,7 @@ public class Account {
     //MODIFIES: this
     //EFFECTS: adds the given animal to the account's donated to lists
     public void addToDonatedTo(Animal animal) {
-        if (!((this.donatedto).contains(animal))){
+        if (!((this.donatedto).contains(animal))) {
             donatedto.add(animal);
         }
     }
@@ -60,14 +60,14 @@ public class Account {
     //REQUIRES: the account's favorite list is not empty
     //MODIFIES: this
     //EFFECTS: removes the given animal from the account's favorites list.
-    public void removeFromFavorites(Animal animal){
+    public void removeFromFavorites(Animal animal) {
         favorites.remove(animal);
     }
 
     //REQUIRES: card should be a string with 16 digits and a space character separating every 4 digits.
     //EFFECTS: returns true if the given card begins with 4.
-    public boolean hasValidCard(String card){
-        if('4' == (card.charAt(0))){
+    public boolean hasValidCard(String card) {
+        if ('4' == (card.charAt(0))) {
             return true;
         }
         return false;
@@ -85,10 +85,17 @@ public class Account {
         return this.favorites;
     }
 
-    public ArrayList<Animal> getDonatedTo(){
+    public ArrayList<Animal> getDonatedTo() {
         return this.donatedto;
     }
 
+    public static int getMaxDonation() {
+        return MAX_DONATION;
+    }
+
+    public static int getMinDonation() {
+        return MIN_DONATION;
+    }
 }
 
 

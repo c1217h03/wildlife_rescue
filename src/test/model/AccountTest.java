@@ -1,39 +1,28 @@
 package model;
 
-import model.bears.GiantPanda;
-import model.bears.PolarBear;
-import model.bigcats.SnowLeopard;
-import model.bigcats.Tiger;
-import model.elephants.AfricanForestElephant;
-import model.elephants.SumatranElephant;
-import model.marineanimals.BelugaWhale;
-import model.marineanimals.NorthAtlanticRWhale;
-import model.marineanimals.WhaleShark;
-import model.rhinos.BlackRhino;
-import model.rhinos.SumatranRhino;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static model.Account.MAX_DONATION;
-import static model.Account.MIN_DONATION;
+import static model.Account.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AccountTest {
     private Account acc1;
     private Account acc2;
-    private BlackRhino blackRhino;
-    private SumatranRhino sumatranRhino;
-    private PolarBear polarBear;
-    private GiantPanda giantPanda;
-    private SnowLeopard snowLeopard;
-    private Tiger tiger;
-    private AfricanForestElephant afElephant;
-    private SumatranElephant sElephant;
-    private BelugaWhale belugaWhale;
-    private NorthAtlanticRWhale narWhale;
-    private WhaleShark whaleShark;
+    private Rhino blackRhino;
+    private Rhino sumatranRhino;
+    private Bear polarBear;
+    private Bear giantPanda;
+    private BigCat snowLeopard;
+    private BigCat tiger;
+    private Elephant afElephant;
+    private Elephant sElephant;
+    private MarineAnimal belugaWhale;
+    private MarineAnimal narWhale;
+    private MarineAnimal whaleShark;
     private Animal animal;
 
 
@@ -41,17 +30,18 @@ class AccountTest {
     public void setup() {
         acc1 = new Account("user1", "4536 0022 3144 1702");
         acc2 = new Account("Emma", "1111 1111 1111 1111");
-        blackRhino = new BlackRhino();
-        sumatranRhino = new SumatranRhino();
-        narWhale = new NorthAtlanticRWhale();
-        belugaWhale = new BelugaWhale();
-        polarBear = new PolarBear();
-        giantPanda = new GiantPanda();
-        snowLeopard = new SnowLeopard();
-        tiger = new Tiger();
-        afElephant = new AfricanForestElephant();
-        sElephant = new SumatranElephant();
-        whaleShark = new WhaleShark();
+        blackRhino = new Rhino("Black Rhino", "CE", "Savannah", 5500);
+        sumatranRhino = new Rhino("Sumatran Rhino", "CE", "Tropical Forests", 80);
+        narWhale = new MarineAnimal("North Atlantic Right Whale", "CE", "Ocean", 366);
+        belugaWhale = new MarineAnimal("Beluga Whale", "NT", "Ocean", 150000);
+        polarBear = new Bear("Polar Bear", "V", "Arctic Ocean", 265000);
+        giantPanda = new Bear("Giant Panda", "V", "Chinese Forests", 1864);
+        snowLeopard = new BigCat("Snow Leopard", "V", "High Mountains", 5000);
+        tiger = new BigCat("Tiger", "E", "Rainforests", 4500);
+        afElephant = new Elephant("African Forest Elephant", "CE", "African Forests",
+                415000);
+        sElephant = new Elephant("Sumatran Elephant", "CE", "Tropical Forests", 2400);
+        whaleShark = new MarineAnimal("Whale Shark", "E", "Ocean", 200000);
     }
 
     @Test
@@ -67,120 +57,120 @@ class AccountTest {
 
     @Test
     public void testDonatePolarBears() {
-        acc1.donate(MIN_DONATION, polarBear);
-        assertEquals(MIN_DONATION, polarBear.getDonation());
+        acc1.donate(getMinDonation(), polarBear);
+        assertEquals(getMinDonation(), polarBear.getDonation());
         acc1.donate(2000, polarBear);
-        assertEquals(2000 + MIN_DONATION, polarBear.getDonation());
-        acc1.donate(MAX_DONATION, polarBear);
-        assertEquals(2000 + MIN_DONATION + MAX_DONATION, polarBear.getDonation());
-        acc1.donate(MAX_DONATION - 1, polarBear);
-        assertEquals(2000 + MIN_DONATION + MAX_DONATION + MAX_DONATION - 1, polarBear.getDonation());
+        assertEquals(2000 + getMinDonation(), polarBear.getDonation());
+        acc1.donate(getMaxDonation(), polarBear);
+        assertEquals(2000 + getMinDonation() + getMaxDonation(), polarBear.getDonation());
+        acc1.donate(getMaxDonation() - 1, polarBear);
+        assertEquals(2000 + getMinDonation() + getMaxDonation() + getMaxDonation() - 1, polarBear.getDonation());
     }
 
     @Test
     public void testDonateGiantPanda() {
-        acc1.donate(MIN_DONATION, giantPanda);
-        assertEquals(MIN_DONATION, giantPanda.getDonation());
+        acc1.donate(getMinDonation(), giantPanda);
+        assertEquals(getMinDonation(), giantPanda.getDonation());
         acc1.donate(1500, giantPanda);
-        assertEquals(1500 + MIN_DONATION, giantPanda.getDonation());
-        acc1.donate(MAX_DONATION, giantPanda);
-        assertEquals(1500 + MIN_DONATION + MAX_DONATION, giantPanda.getDonation());
+        assertEquals(1500 + getMinDonation(), giantPanda.getDonation());
+        acc1.donate(getMaxDonation(), giantPanda);
+        assertEquals(1500 + getMinDonation() + getMaxDonation(), giantPanda.getDonation());
     }
 
     @Test
     public void testDonateAFElephant() {
-        acc1.donate(MIN_DONATION, afElephant);
-        assertEquals(MIN_DONATION, afElephant.getDonation());
+        acc1.donate(getMinDonation(), afElephant);
+        assertEquals(getMinDonation(), afElephant.getDonation());
         acc1.donate(10, afElephant);
-        assertEquals(10 + MIN_DONATION, afElephant.getDonation());
-        acc1.donate(MAX_DONATION, afElephant);
-        assertEquals(10 + MIN_DONATION + MAX_DONATION, afElephant.getDonation());
+        assertEquals(10 + getMinDonation(), afElephant.getDonation());
+        acc1.donate(getMaxDonation(), afElephant);
+        assertEquals(10 + getMinDonation() + getMaxDonation(), afElephant.getDonation());
     }
 
     @Test
     public void testDonateSElephant() {
-        acc1.donate(MIN_DONATION, sElephant);
-        assertEquals(MIN_DONATION, sElephant.getDonation());
+        acc1.donate(getMinDonation(), sElephant);
+        assertEquals(getMinDonation(), sElephant.getDonation());
         acc1.donate(200, sElephant);
-        assertEquals(200 + MIN_DONATION, sElephant.getDonation());
-        acc1.donate(MAX_DONATION, sElephant);
-        assertEquals(200 + MIN_DONATION + MAX_DONATION, sElephant.getDonation());
+        assertEquals(200 + getMinDonation(), sElephant.getDonation());
+        acc1.donate(getMaxDonation(), sElephant);
+        assertEquals(200 + getMinDonation() + getMaxDonation(), sElephant.getDonation());
     }
 
     @Test
     public void testDonateNARWhale() {
-        acc1.donate(MIN_DONATION, narWhale);
-        assertEquals(MIN_DONATION, narWhale.getDonation());
+        acc1.donate(getMinDonation(), narWhale);
+        assertEquals(getMinDonation(), narWhale.getDonation());
         acc1.donate(2000, narWhale);
-        assertEquals(2000 + MIN_DONATION, narWhale.getDonation());
-        acc1.donate(MAX_DONATION, narWhale);
-        assertEquals(2000 + MIN_DONATION + MAX_DONATION, narWhale.getDonation());
+        assertEquals(2000 + getMinDonation(), narWhale.getDonation());
+        acc1.donate(getMaxDonation(), narWhale);
+        assertEquals(2000 + getMinDonation() + getMaxDonation(), narWhale.getDonation());
 
     }
 
     @Test
     public void testDonateWhaleShark() {
-        acc1.donate(MIN_DONATION, whaleShark);
-        assertEquals(MIN_DONATION, whaleShark.getDonation());
+        acc1.donate(getMinDonation(), whaleShark);
+        assertEquals(getMinDonation(), whaleShark.getDonation());
         acc1.donate(1500, whaleShark);
-        assertEquals(1500 + MIN_DONATION, whaleShark.getDonation());
-        acc1.donate(MAX_DONATION, whaleShark);
-        assertEquals(1500 + MIN_DONATION + MAX_DONATION, whaleShark.getDonation());
+        assertEquals(1500 + getMinDonation(), whaleShark.getDonation());
+        acc1.donate(getMaxDonation(), whaleShark);
+        assertEquals(1500 + getMinDonation() + getMaxDonation(), whaleShark.getDonation());
 
     }
 
     @Test
     public void testDonateBelugaWhale() {
-        acc1.donate(MIN_DONATION, belugaWhale);
-        assertEquals(MIN_DONATION, belugaWhale.getDonation());
+        acc1.donate(getMinDonation(), belugaWhale);
+        assertEquals(getMinDonation(), belugaWhale.getDonation());
         acc1.donate(10, belugaWhale);
-        assertEquals(10 + MIN_DONATION, belugaWhale.getDonation());
-        acc1.donate(MAX_DONATION, belugaWhale);
-        assertEquals(10 + MIN_DONATION + MAX_DONATION, belugaWhale.getDonation());
+        assertEquals(10 + getMinDonation(), belugaWhale.getDonation());
+        acc1.donate(getMaxDonation(), belugaWhale);
+        assertEquals(10 + getMinDonation() + getMaxDonation(), belugaWhale.getDonation());
 
     }
 
     @Test
     public void testDonateBlackRhinos() {
-        acc1.donate(MIN_DONATION, blackRhino);
-        assertEquals(MIN_DONATION, blackRhino.getDonation());
+        acc1.donate(getMinDonation(), blackRhino);
+        assertEquals(getMinDonation(), blackRhino.getDonation());
         acc1.donate(200, blackRhino);
-        assertEquals(200 + MIN_DONATION, blackRhino.getDonation());
-        acc1.donate(MAX_DONATION, blackRhino);
-        assertEquals(200 + MIN_DONATION + MAX_DONATION, blackRhino.getDonation());
+        assertEquals(200 + getMinDonation(), blackRhino.getDonation());
+        acc1.donate(getMaxDonation(), blackRhino);
+        assertEquals(200 + getMinDonation() + getMaxDonation(), blackRhino.getDonation());
 
     }
 
     @Test
     public void testDonateSRhinos() {
-        acc1.donate(MIN_DONATION, sumatranRhino);
-        assertEquals(MIN_DONATION, sumatranRhino.getDonation());
+        acc1.donate(getMinDonation(), sumatranRhino);
+        assertEquals(getMinDonation(), sumatranRhino.getDonation());
         acc1.donate(2000, sumatranRhino);
-        assertEquals(2000 + MIN_DONATION, sumatranRhino.getDonation());
-        acc1.donate(MAX_DONATION, sumatranRhino);
-        assertEquals(2000 + MIN_DONATION + MAX_DONATION, sumatranRhino.getDonation());
+        assertEquals(2000 + getMinDonation(), sumatranRhino.getDonation());
+        acc1.donate(getMaxDonation(), sumatranRhino);
+        assertEquals(2000 + getMinDonation() + getMaxDonation(), sumatranRhino.getDonation());
 
     }
 
     @Test
     public void testDonateSnowLeopard() {
-        acc1.donate(MIN_DONATION, snowLeopard);
-        assertEquals(MIN_DONATION, snowLeopard.getDonation());
+        acc1.donate(getMinDonation(), snowLeopard);
+        assertEquals(getMinDonation(), snowLeopard.getDonation());
         acc1.donate(1500, snowLeopard);
-        assertEquals(1500 + MIN_DONATION, snowLeopard.getDonation());
-        acc1.donate(MAX_DONATION, snowLeopard);
-        assertEquals(1500 + MIN_DONATION + MAX_DONATION, snowLeopard.getDonation());
+        assertEquals(1500 + getMinDonation(), snowLeopard.getDonation());
+        acc1.donate(getMaxDonation(), snowLeopard);
+        assertEquals(1500 + getMinDonation() + getMaxDonation(), snowLeopard.getDonation());
 
     }
 
     @Test
     public void testDonateTiger() {
-        acc1.donate(MIN_DONATION, tiger);
-        assertEquals(MIN_DONATION, tiger.getDonation());
+        acc1.donate(getMinDonation(), tiger);
+        assertEquals(getMinDonation(), tiger.getDonation());
         acc1.donate(10, tiger);
-        assertEquals(10 + MIN_DONATION, tiger.getDonation());
-        acc1.donate(MAX_DONATION, tiger);
-        assertEquals(10 + MIN_DONATION + MAX_DONATION, tiger.getDonation());
+        assertEquals(10 + getMinDonation(), tiger.getDonation());
+        acc1.donate(getMaxDonation(), tiger);
+        assertEquals(10 + getMinDonation() + getMaxDonation(), tiger.getDonation());
 
     }
 

@@ -3,14 +3,14 @@ package model;
 //represents an endangered animal with the amount of donations it has, name, population, species, status, and habitat
 public class Animal {
     protected double donations = 0;
-    protected  String name;
+    protected String name;
     protected double population;
     protected String species;
     protected String status;
     protected String habitat;
 
     //gets the name of the animal objects its called on.
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
