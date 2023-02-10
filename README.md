@@ -27,5 +27,5 @@ like myself to assist other creatures in need that aren't physically within our 
 - as a user, I want to see a list of critically endangered, endagered, and vulnerable animals.
 - as a user, I want to see animals I donated to.
 - as a user, I want to download my donation receipts.
-- as a user, I want to log in to my account and add my card details.
+- as a user, I want to sign up to my account and add my card details.
 
