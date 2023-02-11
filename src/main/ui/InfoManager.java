@@ -2,6 +2,7 @@ package ui;
 
 import model.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -63,10 +64,15 @@ public class InfoManager {
     private static final String ADD_TO_FAVES = "add";
     private static final String DONATE = "donate";
     private static final String BACK_COMMAND = "back";
+    private static final String CRITICAL = "critical";
+    private static final String ENDANGERED = "endangered";
+    private static final String VULNERABLE = "vulnerable";
 
     private final Scanner input;
     private boolean runProgram;
     private Account account;
+    private List<Animal> animals =  new ArrayList<>();
+    private List<Animal> animalList = addingAnimals();
 
     public InfoManager() {
         input = new Scanner(System.in);
@@ -139,6 +145,9 @@ public class InfoManager {
         System.out.println("To see animals enter: " + SPECIES);
         System.out.println("To see your favorite animals enter: " + FAVORITES);
         System.out.println("To see your previous donations enter: " + DONATED_TO);
+        System.out.println("To see critically endangered animals enter: " + CRITICAL);
+        System.out.println("To see endangered animals enter: " + ENDANGERED);
+        System.out.println("To see vulnerable animals enter: " + VULNERABLE);
         System.out.println("To quit enter: " + QUIT);
         handleWelcomeInput();
     }
@@ -155,6 +164,15 @@ public class InfoManager {
                 break;
             case DONATED_TO:
                 printListOfAnimals((this.account).getDonatedTo());
+                break;
+            case CRITICAL:
+                printListOfAnimals(getCritical(animalList));
+                break;
+            case ENDANGERED:
+                printListOfAnimals(getEndangered(animalList));
+                break;
+            case VULNERABLE:
+                printListOfAnimals(getVulnerable(animalList));
                 break;
             case QUIT:
                 runProgram = false;
@@ -492,8 +510,54 @@ public class InfoManager {
         return string;
     }
 
+    private List<Animal> getCritical(List<Animal> animalsList) {
+        List<Animal> critical = new ArrayList<>();
+        for (Animal a : animalsList) {
+            if (a.getStatus() == "CE") {
+                critical.add(a);
+            }
+        }
+        return critical;
+    }
+
+    private List<Animal> getEndangered(List<Animal> animalsList) {
+        List<Animal> endangered = new ArrayList<>();
+        for (Animal a : animalsList) {
+            if (a.getStatus() == "E" || a.getStatus() == "CE") {
+                endangered.add(a);
+            }
+        }
+        return endangered;
+    }
+
+    private List<Animal> getVulnerable(List<Animal> animalsList) {
+        List<Animal> endangered = new ArrayList<>();
+        for (Animal a : animalsList) {
+            if (a.getStatus() == "V") {
+                endangered.add(a);
+            }
+        }
+        return endangered;
+    }
+
     public boolean getProgramStatus() {
         return runProgram;
+    }
+
+    private List<Animal> addingAnimals() {
+        animals.add(blackRhino);
+        animals.add(sumatranRhino);
+        animals.add(afElephant);
+        animals.add(sElephant);
+        animals.add(polarBear);
+        animals.add(giantPanda);
+        animals.add(snowLeopard);
+        animals.add(tiger);
+        animals.add(whaleShark);
+        animals.add(belugaWhale);
+        animals.add(narWhale);
+
+        return animals;
     }
 
 }

@@ -994,6 +994,85 @@ public class InfoManagerTest {
     }
 
     @Test
+    public void testLookAtCritical() {
+        String userInput = String.format("sign up%sc%s4%scritical" +
+                        "%sbacks%squit",
+                System.lineSeparator(),
+                System.lineSeparator(),
+                System.lineSeparator(),
+                System.lineSeparator(),
+                System.lineSeparator());
+        ByteArrayInputStream bais = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(bais);
+
+        String expected = "Quitting...";
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(baos);
+        System.setOut(printStream);
+
+        Main.main(null); // call the main method
+
+        String[] lines = baos.toString().split(System.lineSeparator());
+        String actual = lines[lines.length-1];
+
+        // checkout output
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void testLookAtEndangered() {
+        String userInput = String.format("sign up%sc%s4%sendangered" +
+                        "%sback%squit",
+                System.lineSeparator(),
+                System.lineSeparator(),
+                System.lineSeparator(),
+                System.lineSeparator(),
+                System.lineSeparator());
+        ByteArrayInputStream bais = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(bais);
+
+        String expected = "Quitting...";
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(baos);
+        System.setOut(printStream);
+
+        Main.main(null); // call the main method
+
+        String[] lines = baos.toString().split(System.lineSeparator());
+        String actual = lines[lines.length-1];
+
+        // checkout output
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void testLookAtVulnerable() {
+        String userInput = String.format("sign up%sc%s4%svulnerable" +
+                        "%sback%squit",
+                System.lineSeparator(),
+                System.lineSeparator(),
+                System.lineSeparator(),
+                System.lineSeparator(),
+                System.lineSeparator(),
+                System.lineSeparator());
+        ByteArrayInputStream bais = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(bais);
+
+        String expected = "Quitting...";
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(baos);
+        System.setOut(printStream);
+
+        Main.main(null); // call the main method
+
+        String[] lines = baos.toString().split(System.lineSeparator());
+        String actual = lines[lines.length-1];
+
+        // checkout output
+        assertEquals(expected,actual);
+    }
+
+    @Test
     public void testLookAtRhinoAndWrongInput() {
         String userInput = String.format("sign up%sc%s4%sspecies" +
                         "%srhinos%sblack rino%squit",

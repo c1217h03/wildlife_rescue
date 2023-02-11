@@ -35,15 +35,7 @@ public class Account {
         animal.addDonation(amount);
         this.addToDonatedTo(animal);
     }
-
-//    //REQUIRES: card should be a string with 16 digits and a space character separating every 4 digits.
-//    //EFFECTS: returns true if the given username and card matches the user's fields
-//    public boolean validUser(String username, String card) {
-//        if ((this.username == username) && (this.card == card)) {
-//            return true;
-//        }
-//        return false;
-//    }
+    
 
     //REQUIRES: the animal is not already in the list.
     //MODIFIES: this
