@@ -17,12 +17,15 @@ public class Account {
     //         sets the username with the given name.
     //         sets the user's card with the given card.
     //         initializes favorites and dontatedto lists to new ArrayLists.
-    public Account(String username, String card) {
-        this.username = username;
-        this.card = card;
-        this.favorites = new ArrayList<Animal>();
-        this.donatedto = new ArrayList<Animal>();
-
+    public Account(String username, String card) throws NotValidCardException {
+        if (hasValidCard(card)) {
+            this.username = username;
+            this.card = card;
+            this.favorites = new ArrayList<Animal>();
+            this.donatedto = new ArrayList<Animal>();
+        } else {
+            throw new NotValidCardException();
+        }
     }
 
     //REQUIRES: 0 < amount <= 5000
@@ -33,14 +36,14 @@ public class Account {
         this.addToDonatedTo(animal);
     }
 
-    //REQUIRES: card should be a string with 16 digits and a space character separating every 4 digits.
-    //EFFECTS: returns true if the given username and card matches the user's fields
-    public boolean validUser(String username, String card) {
-        if ((this.username == username) && (this.card == card)) {
-            return true;
-        }
-        return false;
-    }
+//    //REQUIRES: card should be a string with 16 digits and a space character separating every 4 digits.
+//    //EFFECTS: returns true if the given username and card matches the user's fields
+//    public boolean validUser(String username, String card) {
+//        if ((this.username == username) && (this.card == card)) {
+//            return true;
+//        }
+//        return false;
+//    }
 
     //REQUIRES: the animal is not already in the list.
     //MODIFIES: this
@@ -72,6 +75,8 @@ public class Account {
         }
         return false;
     }
+
+
 
     public String getUsername() {
         return this.username;
