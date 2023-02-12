@@ -996,7 +996,7 @@ public class InfoManagerTest {
     @Test
     public void testLookAtCritical() {
         String userInput = String.format("sign up%sc%s4%scritical" +
-                        "%sbacks%squit",
+                        "%sback%squit",
                 System.lineSeparator(),
                 System.lineSeparator(),
                 System.lineSeparator(),

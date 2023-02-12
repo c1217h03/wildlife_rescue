@@ -466,17 +466,17 @@ public class InfoManager {
         } else {
             System.out.printf(listOfAnimals + "\n\n");
             System.out.println("To go back enter: " + BACK_COMMAND);
-            handlePrintListInstructions();
+            handlePrintListInstructions(animalList);
         }
     }
 
-    private void handlePrintListInstructions() {
+    private void handlePrintListInstructions(List<Animal> animalList) {
         String str = input.nextLine();
         if (BACK_COMMAND.equals(str)) {
             printWelcomeInstruction();
         } else {
             defaultMessage();
-            printListOfAnimals(account.getFavorites());
+            printListOfAnimals(animalList);
         }
     }
 
