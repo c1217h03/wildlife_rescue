@@ -10,14 +10,16 @@ import static java.lang.Integer.parseInt;
 
 //represents the class that deals with user input.
 public class InfoManager {
-    private static final Rhino blackRhino = new Rhino("Black Rhino", "CE", "Savannah", 5500);
+    private static final Rhino blackRhino = new Rhino("Black Rhino", "CE", "Savannah",
+            5500);
     private static final Rhino sumatranRhino = new Rhino("Sumatran Rhino", "CE", "Tropical Forests",
             80);
     private static final MarineAnimal narWhale = new MarineAnimal("North Atlantic Right Whale", "CE",
             "Ocean", 366);
     private static final MarineAnimal belugaWhale = new MarineAnimal("Beluga Whale", "NT", "Ocean",
             150000);
-    private static final Bear polarBear = new Bear("Polar Bear", "V", "Arctic Ocean", 265000);
+    private static final Bear polarBear = new Bear("Polar Bear", "V", "Arctic Ocean",
+            265000);
     private static final Bear giantPanda = new Bear("Giant Panda", "V", "Chinese Forests",
             1864);
     private static final BigCat snowLeopard = new BigCat("Snow Leopard", "V", "High Mountains",
@@ -25,8 +27,8 @@ public class InfoManager {
     private static final BigCat tiger = new BigCat("Tiger", "E", "Rainforests", 4500);
     private static final Elephant afElephant = new Elephant("African Forest Elephant", "CE",
             "African Forests", 415000);
-    private static final Elephant sElephant = new Elephant("Sumatran Elephant", "CE", "Tropical Forests",
-            2400);
+    private static final Elephant sElephant = new Elephant("Sumatran Elephant", "CE",
+            "Tropical Forests",2400);
     private static final MarineAnimal whaleShark = new MarineAnimal("Whale Shark", "E", "Ocean",
             200000);
 
@@ -80,8 +82,8 @@ public class InfoManager {
 
     }
 
+    //FROM FitLifeGymChain
     //EFFECTS: handles user input until they quit the program.
-    //ATTRIBUTE: FitLifeGymChain
     public void handleUserInput() {
         printSignUpInstruction();
         String string;
@@ -92,8 +94,8 @@ public class InfoManager {
         }
     }
 
+    //FROM FitLifeGymChain
     //EFFECTS: handles the user inputs in the sign-up page.
-    //ATTRIBUTE: FitLifeGymChain
     private void parseInput(String string) {
         switch (string) {
             case SIGN_UP:
@@ -507,6 +509,7 @@ public class InfoManager {
     }
 
 
+    //FROM FitLifeGymChain
     //EFFECTS: quit the program.
     private void endProgram() {
         System.out.println("Quitting...");
@@ -518,7 +521,8 @@ public class InfoManager {
         System.out.println("\nSorry we didn't understand that command. Please try again.\n");
     }
 
-    //EFFECTS: removes white space and quotation marks around s
+    //FROM FitLifeGymChain
+    //EFFECTS: removes white space and quotation marks around s and returns the new string
     private String makePrettyString(String s) {
         s = s.toLowerCase();
         s = s.trim();
@@ -526,7 +530,8 @@ public class InfoManager {
         return s;
     }
 
-    //EFFECTS: gets the input the user entered.
+    //FROM FitLifeGymChain
+    //EFFECTS: returns the input the user entered.
     public String getUserInput() {
         String string = "";
         if (input.hasNext()) {
@@ -536,6 +541,7 @@ public class InfoManager {
         return string;
     }
 
+    //EFFECTS: returns the animals that are "critically" endangered from the animals list.
     private List<Animal> getCritical(List<Animal> animalsList) {
         List<Animal> critical = new ArrayList<>();
         for (Animal a : animalsList) {
@@ -546,6 +552,7 @@ public class InfoManager {
         return critical;
     }
 
+    //EFFECTS: returns the animals that are "endangered" from the animals list.
     private List<Animal> getEndangered(List<Animal> animalsList) {
         List<Animal> endangered = new ArrayList<>();
         for (Animal a : animalsList) {
@@ -556,6 +563,7 @@ public class InfoManager {
         return endangered;
     }
 
+    //EFFECTS: returns the animals that are "vulnerable" from the animals list.
     private List<Animal> getVulnerable(List<Animal> animalsList) {
         List<Animal> endangered = new ArrayList<>();
         for (Animal a : animalsList) {
@@ -570,6 +578,7 @@ public class InfoManager {
         return runProgram;
     }
 
+    //EFFECTS: adds the animals to the animals list.
     private List<Animal> addingAnimals() {
         animals.add(blackRhino);
         animals.add(sumatranRhino);

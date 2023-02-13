@@ -1,14 +1,15 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 //a class that represents an account containing a username, card, favourite list, animals donated to list.
 public class Account {
 
     private String username;
     private String card;
-    private ArrayList<Animal> favorites;
-    private ArrayList<Animal> donatedto;
+    private List<Animal> favorites;
+    private List<Animal> donatedto;
 
     private static int MAX_DONATION = 5000;
     private static int MIN_DONATION = 1;
@@ -21,8 +22,8 @@ public class Account {
         if (hasValidCard(card)) {
             this.username = username;
             this.card = card;
-            this.favorites = new ArrayList<Animal>();
-            this.donatedto = new ArrayList<Animal>();
+            this.favorites = new ArrayList<>();
+            this.donatedto = new ArrayList<>();
         } else {
             throw new NotValidCardException();
         }
@@ -70,6 +71,7 @@ public class Account {
 
 
 
+    //getters
     public String getUsername() {
         return this.username;
     }
@@ -78,11 +80,11 @@ public class Account {
         return this.card;
     }
 
-    public ArrayList<Animal> getFavorites() {
+    public List<Animal> getFavorites() {
         return this.favorites;
     }
 
-    public ArrayList<Animal> getDonatedTo() {
+    public List<Animal> getDonatedTo() {
         return this.donatedto;
     }
 
