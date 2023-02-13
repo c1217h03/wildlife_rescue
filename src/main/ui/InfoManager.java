@@ -71,7 +71,7 @@ public class InfoManager {
     private final Scanner input;
     private boolean runProgram;
     private Account account;
-    private List<Animal> animals =  new ArrayList<>();
+    private List<Animal> animals = new ArrayList<>();
     private List<Animal> animalList = addingAnimals();
 
     public InfoManager() {
@@ -152,13 +152,8 @@ public class InfoManager {
         handleWelcomeInput();
     }
 
-    //EFFECTS: handles the user's input for the welcome instructions
-    private void handleWelcomeInput() {
-        String str = input.nextLine();
-        switch (str) {
-            case SPECIES:
-                printSpeciesInstruction();
-                break;
+    private void welcomeInputPrintListOfAnimal(String s) {
+        switch (s) {
             case FAVORITES:
                 printListOfAnimals((this.account).getFavorites());
                 break;
@@ -173,6 +168,24 @@ public class InfoManager {
                 break;
             case VULNERABLE:
                 printListOfAnimals(getVulnerable(animalList));
+                break;
+
+        }
+    }
+
+    //EFFECTS: handles the user's input for the welcome instructions
+    private void handleWelcomeInput() {
+        String str = input.nextLine();
+        switch (str) {
+            case SPECIES:
+                printSpeciesInstruction();
+                break;
+            case FAVORITES:
+            case DONATED_TO:
+            case CRITICAL:
+            case ENDANGERED:
+            case VULNERABLE:
+                welcomeInputPrintListOfAnimal(str);
                 break;
             case QUIT:
                 runProgram = false;
@@ -197,9 +210,7 @@ public class InfoManager {
         handleSpeciesInput();
     }
 
-    //EFFECTS: handles user inputs for species instructions.
-    private void handleSpeciesInput() {
-        String str = input.nextLine();
+    private void speciesInputSpecificSpecies(String str) {
         switch (str) {
             case BEAR:
                 printBearsInstruction();
@@ -215,6 +226,21 @@ public class InfoManager {
                 break;
             case RHINO:
                 printRhinosInstruction();
+                break;
+        }
+
+    }
+
+    //EFFECTS: handles user inputs for species instructions.
+    private void handleSpeciesInput() {
+        String str = input.nextLine();
+        switch (str) {
+            case BEAR:
+            case MARINE_ANIMALS:
+            case BIG_CATS:
+            case ELEPHANT:
+            case RHINO:
+                speciesInputSpecificSpecies(str);
                 break;
             case BACK_COMMAND:
                 printWelcomeInstruction();
