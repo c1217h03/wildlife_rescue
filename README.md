@@ -26,6 +26,8 @@ like myself to assist other creatures in need that aren't physically within our 
 - as a user, I want to add animals to a list of my favourite animals.
 - as a user, I want to see a list of critically endangered, endagered, and vulnerable animals.
 - as a user, I want to see animals I donated to.
-- as a user, I want to download my donation receipts.
+- as a user, I want to be reminded before I quit to download my current donation progress (favorites list, donated to list).
+- as a user, I want to have the option to save my entire donation progress.
+- as a user, I want to have the option to load my donation progress from file.
 - as a user, I want to sign up to my account and add my card details.
 
