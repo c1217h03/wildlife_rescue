@@ -1,4 +1,5 @@
 package model;
+//class representing a bear with a name, status, habitat, and population, with species as Big Cat.
 
 public class BigCat extends Animal {
     public BigCat(String name, String status, String habitat, double population) {

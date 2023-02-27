@@ -264,12 +264,26 @@ class AccountTest {
     }
 
     @Test
-    public void testNotValidCard() throws NotValidCardException {
+    public void testNotValidCardNotValidCardExceptionThrown()  {
+        Account acc2 = null;
         try {
-            Account acc2 = new Account("c", "5555 5555 5555 5555");
+             acc2 = new Account("c", "5555 5555 5555 5555");
         } catch (NotValidCardException e) {
 
         }
+        assertEquals(null, acc2);
+    }
+
+    @Test
+    public void testValidCardNotThrown()  {
+        Account testAcc = null;
+        try {
+             testAcc = new Account("c", "4444 4444 4444 4444");
+        } catch(NotValidCardException e) {
+            fail();
+        }
+        assertEquals("c", testAcc.getUsername());
+        assertEquals("4444 4444 4444 4444", testAcc.getCard());
     }
 
 }
