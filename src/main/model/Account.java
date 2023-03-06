@@ -73,7 +73,7 @@ public class Account implements Writable {
         return false;
     }
 
-    //EFFECTS:
+    //EFFECTS: returns an account into a json array.
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -84,6 +84,7 @@ public class Account implements Writable {
         return json;
     }
 
+    //EFFECTS: returns a list of animals into a json array.
     private JSONArray favesToJson() {
         JSONArray jsonFaves = new JSONArray();
 
@@ -94,6 +95,7 @@ public class Account implements Writable {
         return jsonFaves;
     }
 
+    //EFFECTS: returns a list of animals into a json array.
     private JSONArray donatedToJson() {
         JSONArray jsonDonatedTo = new JSONArray();
 

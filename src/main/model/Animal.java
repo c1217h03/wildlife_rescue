@@ -12,6 +12,7 @@ public class Animal implements Writable {
     protected String status;
     protected String habitat;
 
+    //EFFECTS: constructs a new animal.
     public Animal(String species, String name, String status, String habitat, double population) {
         this.species = species;
         this.name = name;

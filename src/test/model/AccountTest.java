@@ -174,18 +174,6 @@ class AccountTest {
     }
 
 
-//    @Test
-//    public void testValidUser(){
-//        assertTrue(acc1.validUser("user1", "4536 0022 3144 1702"));
-//        assertFalse(acc2.validUser("Emma", "1111 1111 1111 1111"));
-//    }
-//
-//    @Test
-//    public void testNotValidUser(){
-//        assertFalse(acc1.validUser("user2", "3333 0000 1111 3333"));
-//        assertFalse(acc2.validUser("user2", "1212 1212 1212 1212"));
-//}
-
     @Test
     public void testAddToFavoritesAnimalOnce(){
         acc1.addToFavorites(animal);

@@ -13,7 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-//represents a reader that reads an account from file.
+//class that represents a reader that reads an account from file.
 public class JsonReader {
     private String source;
 

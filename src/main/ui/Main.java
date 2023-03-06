@@ -9,6 +9,7 @@ public class Main {
 
     private static InfoManager info;
 
+    //EFFECTS: starts the program.
     public static void main(String[] args) {
         info = new InfoManager();
         info.handleUserInput();

@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
 
-//represents the class that deals with user input.
+//represents the class that deals with user's input.
 public class InfoManager {
     private static final Rhino blackRhino = new Rhino("Black Rhino", "CE", "Savannah",
             5500);
@@ -168,6 +168,7 @@ public class InfoManager {
         handleWelcomeInput();
     }
 
+    //EFFECTS: handles the printing of animal lists.
     private void welcomeInputPrintListOfAnimal(String s) {
         switch (s) {
             case FAVORITES:
@@ -189,6 +190,7 @@ public class InfoManager {
         }
     }
 
+    //EFFECTS: handles the saving, loading, and quitting of the app.
     private void welcomeInputSavingLoadingAndQuitting(String s) {
         switch (s) {
             case LOAD:
@@ -243,6 +245,7 @@ public class InfoManager {
         handleSpeciesInput();
     }
 
+    //EFFECTS: handles the species input.
     private void speciesInputSpecificSpecies(String str) {
         switch (str) {
             case BEAR:
@@ -529,6 +532,7 @@ public class InfoManager {
         }
     }
 
+    //EFFECTS: handles the back command after printing animals.
     private void handlePrintListInstructions(List<Animal> animalList) {
         String str = input.nextLine();
         if (BACK_COMMAND.equals(str)) {
