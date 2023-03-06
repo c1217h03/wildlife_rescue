@@ -7,6 +7,8 @@ import static model.Account.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+
+//represents a class for marine animal testing
 public class MarineAnimalTest {
 
     private MarineAnimal belugaWhale;

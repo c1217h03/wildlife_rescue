@@ -1,13 +1,24 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 //represents an endangered animal with the amount of donations it has, name, population, species, status, and habitat
-public class Animal {
+public class Animal implements Writable {
     protected double donations = 0;
     protected String name;
     protected double population;
     protected String species;
     protected String status;
     protected String habitat;
+
+    public Animal(String species, String name, String status, String habitat, double population) {
+        this.species = species;
+        this.name = name;
+        this.status = status;
+        this.habitat = habitat;
+        this.population = population;
+    }
 
 
     //EFFECTS: add the given amount into the animal's donation.
@@ -46,5 +57,16 @@ public class Animal {
         return this.species;
     }
 
-
+    //EFFECTS: returns the animal as a JSON object, saving only the donations.
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("donations", donations);
+        json.put("habitat", habitat);
+        json.put("population", population);
+        json.put("status", status);
+        json.put("species", species);
+        return json;
+    }
 }

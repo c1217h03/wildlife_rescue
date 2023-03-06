@@ -1,0 +1,30 @@
+{
+    "favorites": [
+        {
+            "habitat": "Savannah",
+            "donations": 0,
+            "species": "Big Cat",
+            "name": "Lion",
+            "population": 15000,
+            "status": "E"
+        },
+        {
+            "habitat": "Oceans",
+            "donations": 0,
+            "species": "Marine Animal",
+            "name": "Seal",
+            "population": 200000,
+            "status": "V"
+        }
+    ],
+    "donatedto": [{
+        "habitat": "Savannah",
+        "donations": 0,
+        "species": "Big Cat",
+        "name": "Lion",
+        "population": 15000,
+        "status": "E"
+    }],
+    "card": "4545",
+    "username": "Pho"
+}

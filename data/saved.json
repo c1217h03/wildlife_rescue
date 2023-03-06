@@ -1,0 +1,13 @@
+{
+    "favorites": [{
+        "habitat": "Savannah",
+        "donations": 0,
+        "species": "Rhino",
+        "name": "Black Rhino",
+        "population": 5500,
+        "status": "CE"
+    }],
+    "donatedto": [],
+    "card": "4",
+    "username": "c"
+}

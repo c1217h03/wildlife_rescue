@@ -1,7 +1,11 @@
 package ui;
 
 import model.*;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -69,16 +73,24 @@ public class InfoManager {
     private static final String CRITICAL = "critical";
     private static final String ENDANGERED = "endangered";
     private static final String VULNERABLE = "vulnerable";
+    private static final String SAVE = "save";
+    private static final String LOAD = "load";
+
+    private static final String FILENAME = "./data/saved.json";
 
     private final Scanner input;
     private boolean runProgram;
     private Account account;
     private List<Animal> animals = new ArrayList<>();
     private List<Animal> animalList = addingAnimals();
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     public InfoManager() {
         input = new Scanner(System.in);
         runProgram = true;
+        jsonReader = new JsonReader(FILENAME);
+        jsonWriter = new JsonWriter(FILENAME);
 
     }
 
@@ -150,6 +162,8 @@ public class InfoManager {
         System.out.println("To see critically endangered animals enter: " + CRITICAL);
         System.out.println("To see endangered animals enter: " + ENDANGERED);
         System.out.println("To see vulnerable animals enter: " + VULNERABLE);
+        System.out.println("Would you like to save your favorites list? enter: " + SAVE);
+        System.out.println("If you would like to load your favorites list enter: " + LOAD);
         System.out.println("To quit enter: " + QUIT);
         handleWelcomeInput();
     }
@@ -175,6 +189,22 @@ public class InfoManager {
         }
     }
 
+    private void welcomeInputSavingLoadingAndQuitting(String s) {
+        switch (s) {
+            case LOAD:
+                loadFile();
+                printWelcomeInstruction();
+                break;
+            case SAVE:
+                saveFile();
+                break;
+            case QUIT:
+                runProgram = false;
+                endProgram();
+                break;
+        }
+    }
+
     //EFFECTS: handles the user's input for the welcome instructions
     private void handleWelcomeInput() {
         String str = input.nextLine();
@@ -189,9 +219,10 @@ public class InfoManager {
             case VULNERABLE:
                 welcomeInputPrintListOfAnimal(str);
                 break;
+            case LOAD:
+            case SAVE:
             case QUIT:
-                runProgram = false;
-                endProgram();
+                welcomeInputSavingLoadingAndQuitting(str);
                 break;
             default:
                 defaultMessage();
@@ -594,6 +625,34 @@ public class InfoManager {
 
         return animals;
     }
+
+    //MODIFIES: this
+    //EFFECTS: load the user's favorites list from file.
+    private void loadFile() {
+        try {
+            account = jsonReader.read();
+            System.out.println("Loaded " + account.getUsername() + "'s account from " + FILENAME);
+        } catch (IOException e) {
+            System.out.println("File Not Found. Couldn't load data.");
+            printWelcomeInstruction();
+        } catch (NotValidCardException e) {
+            System.out.println("The card you entered is not valid. Please try signing up again.");
+            printWelcomeInstruction();
+        }
+    }
+
+    //EFFECTS: save the user's favorites list to file.
+    private void saveFile() {
+        try {
+            jsonWriter.openFile();
+            jsonWriter.writeToFile(account);
+            jsonWriter.close();
+            System.out.println("Saved " + account.getUsername() + " to " + FILENAME);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + FILENAME);
+        }
+    }
+
 
 }
 

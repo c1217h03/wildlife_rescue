@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import static model.Account.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
+//represents a class for elephant testing
 public class ElephantTest {
     private Elephant afElephant;
     private Elephant sElephant;

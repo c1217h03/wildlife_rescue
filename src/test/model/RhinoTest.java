@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static model.Account.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+//represents a class for rhino testing
 public class RhinoTest {
     private Rhino blackRhino;
     private Rhino sumatranRhino;

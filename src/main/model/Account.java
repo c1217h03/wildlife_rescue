@@ -1,10 +1,14 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 //a class that represents an account containing a username, card, favourite list, animals donated to list.
-public class Account {
+public class Account implements Writable {
 
     private String username;
     private String card;
@@ -69,6 +73,37 @@ public class Account {
         return false;
     }
 
+    //EFFECTS:
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("username", username);
+        json.put("card", card);
+        json.put("favorites", favesToJson());
+        json.put("donatedto", donatedToJson());
+        return json;
+    }
+
+    private JSONArray favesToJson() {
+        JSONArray jsonFaves = new JSONArray();
+
+        for (Animal a : favorites) {
+            jsonFaves.put(a.toJson());
+        }
+
+        return jsonFaves;
+    }
+
+    private JSONArray donatedToJson() {
+        JSONArray jsonDonatedTo = new JSONArray();
+
+        for (Animal a : donatedto) {
+            jsonDonatedTo.put(a.toJson());
+        }
+
+        return jsonDonatedTo;
+    }
+
 
 
     //getters
@@ -95,6 +130,8 @@ public class Account {
     public static int getMinDonation() {
         return MIN_DONATION;
     }
+
+
 }
 
 

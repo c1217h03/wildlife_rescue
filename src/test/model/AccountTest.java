@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import static model.Account.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+//represents a class for account testing
+
 class AccountTest {
     private Account acc1;
     private Rhino blackRhino;
