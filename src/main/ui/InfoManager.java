@@ -2,6 +2,7 @@ package ui;
 
 import model.*;
 import persistence.JsonReader;
+import persistence.JsonReaderAuto;
 import persistence.JsonWriter;
 
 import java.io.FileNotFoundException;
@@ -14,27 +15,6 @@ import static java.lang.Integer.parseInt;
 
 //represents the class that deals with user's input.
 public class InfoManager {
-    private static final Rhino blackRhino = new Rhino("Black Rhino", "CE", "Savannah",
-            5500);
-    private static final Rhino sumatranRhino = new Rhino("Sumatran Rhino", "CE", "Tropical Forests",
-            80);
-    private static final MarineAnimal narWhale = new MarineAnimal("North Atlantic Right Whale", "CE",
-            "Ocean", 366);
-    private static final MarineAnimal belugaWhale = new MarineAnimal("Beluga Whale", "NT", "Ocean",
-            150000);
-    private static final Bear polarBear = new Bear("Polar Bear", "V", "Arctic Ocean",
-            265000);
-    private static final Bear giantPanda = new Bear("Giant Panda", "V", "Chinese Forests",
-            1864);
-    private static final BigCat snowLeopard = new BigCat("Snow Leopard", "V", "High Mountains",
-            5000);
-    private static final BigCat tiger = new BigCat("Tiger", "E", "Rainforests", 4500);
-    private static final Elephant afElephant = new Elephant("African Forest Elephant", "CE",
-            "African Forests", 415000);
-    private static final Elephant sElephant = new Elephant("Sumatran Elephant", "CE",
-            "Tropical Forests",2400);
-    private static final MarineAnimal whaleShark = new MarineAnimal("Whale Shark", "E", "Ocean",
-            200000);
 
     //Sign up commands
     private static final String SIGN_UP = "sign up";
@@ -77,26 +57,40 @@ public class InfoManager {
     private static final String LOAD = "load";
 
     private static final String FILENAME = "./data/saved.json";
+    private static final String AUTO_FILE = "./data/auto.json";
 
     private final Scanner input;
     private boolean runProgram;
     private Account account;
-    private List<Animal> animals = new ArrayList<>();
-    private List<Animal> animalList = addingAnimals();
+    private Zoo animalArray;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
+
+    //AUTOSAVE JSON WRITER AND READER:
+    private JsonWriter jsonWriterAuto;
+    private JsonReaderAuto jsonReaderAuto;
 
     public InfoManager() {
         input = new Scanner(System.in);
         runProgram = true;
         jsonReader = new JsonReader(FILENAME);
         jsonWriter = new JsonWriter(FILENAME);
+        jsonReaderAuto = new JsonReaderAuto(AUTO_FILE);
+        jsonWriterAuto = new JsonWriter(AUTO_FILE);
+        animalArray = new Zoo();
+        try {
+            account = new Account("Charm", "4444");
+        } catch (NotValidCardException e) {
+            System.out.println("Card not valid!");
+        }
+        autoLoad();
 
     }
 
     //FROM FitLifeGymChain
     //EFFECTS: handles user input until they quit the program.
     public void handleUserInput() {
+
         printSignUpInstruction();
         String string;
 
@@ -178,13 +172,13 @@ public class InfoManager {
                 printListOfAnimals((this.account).getDonatedTo());
                 break;
             case CRITICAL:
-                printListOfAnimals(getCritical(animalList));
+                printListOfAnimals(animalArray.getCritical());
                 break;
             case ENDANGERED:
-                printListOfAnimals(getEndangered(animalList));
+                printListOfAnimals(animalArray.getEndangered());
                 break;
             case VULNERABLE:
-                printListOfAnimals(getVulnerable(animalList));
+                printListOfAnimals(animalArray.getVulnerable());
                 break;
 
         }
@@ -199,6 +193,7 @@ public class InfoManager {
                 break;
             case SAVE:
                 saveFile();
+                printWelcomeInstruction();
                 break;
             case QUIT:
                 runProgram = false;
@@ -306,10 +301,20 @@ public class InfoManager {
         String str = input.nextLine();
         switch (str) {
             case POLAR_BEAR:
-                printAnimalInfo(polarBear);
+                try {
+                    printAnimalInfo(animalArray.getSpecificAnimal("Polar Bear"));
+                } catch (AnimalNotFoundException e) {
+                    System.out.println("Animal not found.");
+                    printBearsInstruction();
+                }
                 break;
             case GIANT_PANDA:
-                printAnimalInfo(giantPanda);
+                try {
+                    printAnimalInfo(animalArray.getSpecificAnimal("Giant Panda"));
+                } catch (AnimalNotFoundException e) {
+                    System.out.println("Animal not found.");
+                    printBearsInstruction();
+                }
                 break;
             case BACK_COMMAND:
                 printSpeciesInstruction();
@@ -340,10 +345,20 @@ public class InfoManager {
         String str = input.nextLine();
         switch (str) {
             case TIGER:
-                printAnimalInfo(tiger);
+                try {
+                    printAnimalInfo(animalArray.getSpecificAnimal("Tiger"));
+                } catch (AnimalNotFoundException e) {
+                    System.out.println("Animal not found.");
+                    printBearsInstruction();
+                }
                 break;
             case SNOW_LEOPARD:
-                printAnimalInfo(snowLeopard);
+                try {
+                    printAnimalInfo(animalArray.getSpecificAnimal("Snow Leopard"));
+                } catch (AnimalNotFoundException e) {
+                    System.out.println("Animal not found.");
+                    printBearsInstruction();
+                }
                 break;
             case BACK_COMMAND:
                 printSpeciesInstruction();
@@ -374,10 +389,20 @@ public class InfoManager {
         String str = input.nextLine();
         switch (str) {
             case AF_ELEPHANT:
-                printAnimalInfo(afElephant);
+                try {
+                    printAnimalInfo(animalArray.getSpecificAnimal("African Forest Elephant"));
+                } catch (AnimalNotFoundException e) {
+                    System.out.println("Animal not found.");
+                    printBearsInstruction();
+                }
                 break;
             case S_ELEPHANT:
-                printAnimalInfo(sElephant);
+                try {
+                    printAnimalInfo(animalArray.getSpecificAnimal("Sumatran Elephant"));
+                } catch (AnimalNotFoundException e) {
+                    System.out.println("Animal not found.");
+                    printBearsInstruction();
+                }
                 break;
             case BACK_COMMAND:
                 printSpeciesInstruction();
@@ -408,10 +433,20 @@ public class InfoManager {
         String str = input.nextLine();
         switch (str) {
             case BLACK_RHINO:
-                printAnimalInfo(blackRhino);
+                try {
+                    printAnimalInfo(animalArray.getSpecificAnimal("Black Rhino"));
+                } catch (AnimalNotFoundException e) {
+                    System.out.println("Animal not found.");
+                    printBearsInstruction();
+                }
                 break;
             case SUMATRAN_RHINO:
-                printAnimalInfo(sumatranRhino);
+                try {
+                    printAnimalInfo(animalArray.getSpecificAnimal("Sumatran Rhino"));
+                } catch (AnimalNotFoundException e) {
+                    System.out.println("Animal not found.");
+                    printBearsInstruction();
+                }
                 break;
             case BACK_COMMAND:
                 printSpeciesInstruction();
@@ -442,13 +477,28 @@ public class InfoManager {
         String str = input.nextLine();
         switch (str) {
             case WHALE_SHARK:
-                printAnimalInfo(whaleShark);
+                try {
+                    printAnimalInfo(animalArray.getSpecificAnimal("Whale Shark"));
+                } catch (AnimalNotFoundException e) {
+                    System.out.println("Animal not found.");
+                    printBearsInstruction();
+                }
                 break;
             case NAR_WHALE:
-                printAnimalInfo(narWhale);
+                try {
+                    printAnimalInfo(animalArray.getSpecificAnimal("North Atlantic Right Whale"));
+                } catch (AnimalNotFoundException e) {
+                    System.out.println("Animal not found.");
+                    printBearsInstruction();
+                }
                 break;
             case BELUGA_WHALE:
-                printAnimalInfo(belugaWhale);
+                try {
+                    printAnimalInfo(animalArray.getSpecificAnimal("Beluga Whale"));
+                } catch (AnimalNotFoundException e) {
+                    System.out.println("Animal not found.");
+                    printBearsInstruction();
+                }
                 break;
             case BACK_COMMAND:
                 printSpeciesInstruction();
@@ -511,6 +561,7 @@ public class InfoManager {
         System.out.println("Enter the amount you want to donate.");
         String str = input.nextLine();
         this.account.donate(parseInt(str), animal);
+        autoSave();
         System.out.println(animal.getName() + "s " + "thank you for your donations\n");
         printWelcomeInstruction();
     }
@@ -547,6 +598,11 @@ public class InfoManager {
     //FROM FitLifeGymChain
     //EFFECTS: quit the program.
     private void endProgram() {
+        try {
+            System.out.println(animalArray.getSpecificAnimal("Black Rhino").getDonation());
+        } catch (AnimalNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("Quitting...");
         input.close();
     }
@@ -576,62 +632,15 @@ public class InfoManager {
         return string;
     }
 
-    //EFFECTS: returns the animals that are "critically" endangered from the animals list.
-    private List<Animal> getCritical(List<Animal> animalsList) {
-        List<Animal> critical = new ArrayList<>();
-        for (Animal a : animalsList) {
-            if (a.getStatus() == "CE") {
-                critical.add(a);
-            }
-        }
-        return critical;
-    }
 
-    //EFFECTS: returns the animals that are "endangered" from the animals list.
-    private List<Animal> getEndangered(List<Animal> animalsList) {
-        List<Animal> endangered = new ArrayList<>();
-        for (Animal a : animalsList) {
-            if (a.getStatus() == "E" || a.getStatus() == "CE") {
-                endangered.add(a);
-            }
-        }
-        return endangered;
-    }
-
-    //EFFECTS: returns the animals that are "vulnerable" from the animals list.
-    private List<Animal> getVulnerable(List<Animal> animalsList) {
-        List<Animal> endangered = new ArrayList<>();
-        for (Animal a : animalsList) {
-            if (a.getStatus() == "V") {
-                endangered.add(a);
-            }
-        }
-        return endangered;
-    }
 
     public boolean getProgramStatus() {
         return runProgram;
     }
 
-    //EFFECTS: adds the animals to the animals list.
-    private List<Animal> addingAnimals() {
-        animals.add(blackRhino);
-        animals.add(sumatranRhino);
-        animals.add(afElephant);
-        animals.add(sElephant);
-        animals.add(polarBear);
-        animals.add(giantPanda);
-        animals.add(snowLeopard);
-        animals.add(tiger);
-        animals.add(whaleShark);
-        animals.add(belugaWhale);
-        animals.add(narWhale);
-
-        return animals;
-    }
 
     //MODIFIES: this
-    //EFFECTS: load the user's favorites list from file.
+    //EFFECTS: load the user's favorites list and donated to list from file.
     private void loadFile() {
         try {
             account = jsonReader.read();
@@ -656,6 +665,32 @@ public class InfoManager {
             System.out.println("Unable to write to file: " + FILENAME);
         }
     }
+
+   //AUTOSAVE:
+
+   //EFFECTS: save the user's favorites list to file.
+   private void autoSave() {
+       try {
+           jsonWriterAuto.openFile();
+           jsonWriterAuto.autoWrite(animalArray);
+           jsonWriterAuto.close();
+       } catch (FileNotFoundException e) {
+           System.out.println("Unable to write to file: " + AUTO_FILE);
+       }
+   }
+
+    //MODIFIES: this
+    //EFFECTS: load the user's favorites list from file.
+    private void autoLoad() {
+        try {
+           animalArray = jsonReaderAuto.read();
+            System.out.println("Loaded zoo");
+        } catch (IOException e) {
+            System.out.println("File Not Found. Couldn't load data.");
+            printWelcomeInstruction();
+        }
+    }
+
 
 
 }

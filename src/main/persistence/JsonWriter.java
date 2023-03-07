@@ -2,6 +2,7 @@ package persistence;
 
 import model.Account;
 import model.Animal;
+import model.Zoo;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -30,6 +31,13 @@ public class JsonWriter {
     //EFFECTS: writes the given account to file
     public void writeToFile(Account account) {
         JSONObject json = account.toJson();
+        saveToFile(json.toString(TAB));
+    }
+
+    //MODIFIES: this
+    //EFFECTS: writes the given zoo to file
+    public void autoWrite(Zoo zoo) {
+        JSONObject json = zoo.toJson();
         saveToFile(json.toString(TAB));
     }
 
