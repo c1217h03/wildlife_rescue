@@ -45,6 +45,7 @@ public class InfoManager {
     private static final String BELUGA_WHALE = "beluga";
     private static final String BLACK_RHINO = "black rhino";
     private static final String SUMATRAN_RHINO = "sumatran rhino";
+    private static final String AFRICAN_RHINO = "african rhino"; //test animal
 
     //Extra Commands
     private static final String ADD_TO_FAVES = "add";
@@ -56,6 +57,7 @@ public class InfoManager {
     private static final String SAVE = "save";
     private static final String LOAD = "load";
 
+    //File Names
     private static final String FILENAME = "./data/saved.json";
     private static final String AUTO_FILE = "./data/auto.json";
 
@@ -301,20 +303,10 @@ public class InfoManager {
         String str = input.nextLine();
         switch (str) {
             case POLAR_BEAR:
-                try {
-                    printAnimalInfo(animalArray.getSpecificAnimal("Polar Bear"));
-                } catch (AnimalNotFoundException e) {
-                    System.out.println("Animal not found.");
-                    printBearsInstruction();
-                }
+                printAnimalInfo(animalArray.getSpecificAnimal("Polar Bear"));
                 break;
             case GIANT_PANDA:
-                try {
-                    printAnimalInfo(animalArray.getSpecificAnimal("Giant Panda"));
-                } catch (AnimalNotFoundException e) {
-                    System.out.println("Animal not found.");
-                    printBearsInstruction();
-                }
+                printAnimalInfo(animalArray.getSpecificAnimal("Giant Panda"));
                 break;
             case BACK_COMMAND:
                 printSpeciesInstruction();
@@ -331,6 +323,8 @@ public class InfoManager {
     }
 
 
+
+
     //EFFECTS: print the instructions to look at big cats
     private void printBigCatsInstruction() {
         System.out.println("To see the Snow Leopard enter: " + SNOW_LEOPARD);
@@ -345,20 +339,10 @@ public class InfoManager {
         String str = input.nextLine();
         switch (str) {
             case TIGER:
-                try {
-                    printAnimalInfo(animalArray.getSpecificAnimal("Tiger"));
-                } catch (AnimalNotFoundException e) {
-                    System.out.println("Animal not found.");
-                    printBearsInstruction();
-                }
+                printAnimalInfo(animalArray.getSpecificAnimal("Tiger"));
                 break;
             case SNOW_LEOPARD:
-                try {
-                    printAnimalInfo(animalArray.getSpecificAnimal("Snow Leopard"));
-                } catch (AnimalNotFoundException e) {
-                    System.out.println("Animal not found.");
-                    printBearsInstruction();
-                }
+                printAnimalInfo(animalArray.getSpecificAnimal("Snow Leopard"));
                 break;
             case BACK_COMMAND:
                 printSpeciesInstruction();
@@ -389,20 +373,10 @@ public class InfoManager {
         String str = input.nextLine();
         switch (str) {
             case AF_ELEPHANT:
-                try {
-                    printAnimalInfo(animalArray.getSpecificAnimal("African Forest Elephant"));
-                } catch (AnimalNotFoundException e) {
-                    System.out.println("Animal not found.");
-                    printBearsInstruction();
-                }
+                printAnimalInfo(animalArray.getSpecificAnimal("African Forest Elephant"));
                 break;
             case S_ELEPHANT:
-                try {
-                    printAnimalInfo(animalArray.getSpecificAnimal("Sumatran Elephant"));
-                } catch (AnimalNotFoundException e) {
-                    System.out.println("Animal not found.");
-                    printBearsInstruction();
-                }
+                printAnimalInfo(animalArray.getSpecificAnimal("Sumatran Elephant"));
                 break;
             case BACK_COMMAND:
                 printSpeciesInstruction();
@@ -419,10 +393,12 @@ public class InfoManager {
     }
 
 
+
     //EFFECTS: print the instructions to look at rhinos
     private void printRhinosInstruction() {
         System.out.println("To see the Black Rhino enter: " + BLACK_RHINO);
         System.out.printf("To see the Sumatran Rhino enter: " + SUMATRAN_RHINO);
+        System.out.println("To see the African Rhino enter: " + AFRICAN_RHINO);
         System.out.println("\nTo go back enter: " + BACK_COMMAND);
         System.out.println("To quit enter: " + QUIT);
         handleRhinosInstructions();
@@ -433,21 +409,13 @@ public class InfoManager {
         String str = input.nextLine();
         switch (str) {
             case BLACK_RHINO:
-                try {
-                    printAnimalInfo(animalArray.getSpecificAnimal("Black Rhino"));
-                } catch (AnimalNotFoundException e) {
-                    System.out.println("Animal not found.");
-                    printBearsInstruction();
-                }
+                printAnimalInfo(animalArray.getSpecificAnimal("Black Rhino"));
                 break;
             case SUMATRAN_RHINO:
-                try {
-                    printAnimalInfo(animalArray.getSpecificAnimal("Sumatran Rhino"));
-                } catch (AnimalNotFoundException e) {
-                    System.out.println("Animal not found.");
-                    printBearsInstruction();
-                }
+                printAnimalInfo(animalArray.getSpecificAnimal("Sumatran Rhino"));
                 break;
+            case AFRICAN_RHINO:
+                printAnimalInfo(animalArray.getSpecificAnimal("African Rhion"));
             case BACK_COMMAND:
                 printSpeciesInstruction();
                 break;
@@ -461,6 +429,7 @@ public class InfoManager {
                 break;
         }
     }
+
 
     //EFFECTS: print the instructions to look at marine animals
     private void printMarineAnimalsInstructions() {
@@ -477,28 +446,13 @@ public class InfoManager {
         String str = input.nextLine();
         switch (str) {
             case WHALE_SHARK:
-                try {
-                    printAnimalInfo(animalArray.getSpecificAnimal("Whale Shark"));
-                } catch (AnimalNotFoundException e) {
-                    System.out.println("Animal not found.");
-                    printBearsInstruction();
-                }
+                printAnimalInfo(animalArray.getSpecificAnimal("Whale Shark"));
                 break;
             case NAR_WHALE:
-                try {
-                    printAnimalInfo(animalArray.getSpecificAnimal("North Atlantic Right Whale"));
-                } catch (AnimalNotFoundException e) {
-                    System.out.println("Animal not found.");
-                    printBearsInstruction();
-                }
+                printAnimalInfo(animalArray.getSpecificAnimal("North Atlantic Right Whale"));
                 break;
             case BELUGA_WHALE:
-                try {
-                    printAnimalInfo(animalArray.getSpecificAnimal("Beluga Whale"));
-                } catch (AnimalNotFoundException e) {
-                    System.out.println("Animal not found.");
-                    printBearsInstruction();
-                }
+                printAnimalInfo(animalArray.getSpecificAnimal("Beluga Whale"));
                 break;
             case BACK_COMMAND:
                 printSpeciesInstruction();
@@ -514,6 +468,7 @@ public class InfoManager {
 
         }
     }
+
 
     //EFFECTS: prints an animal's information
     private void printAnimalInfo(Animal animal) {
@@ -598,11 +553,6 @@ public class InfoManager {
     //FROM FitLifeGymChain
     //EFFECTS: quit the program.
     private void endProgram() {
-        try {
-            System.out.println(animalArray.getSpecificAnimal("Black Rhino").getDonation());
-        } catch (AnimalNotFoundException e) {
-            throw new RuntimeException(e);
-        }
         System.out.println("Quitting...");
         input.close();
     }
@@ -631,7 +581,6 @@ public class InfoManager {
         }
         return string;
     }
-
 
 
     public boolean getProgramStatus() {
@@ -666,31 +615,30 @@ public class InfoManager {
         }
     }
 
-   //AUTOSAVE:
+    //AUTOSAVE:
 
-   //EFFECTS: save the user's favorites list to file.
-   private void autoSave() {
-       try {
-           jsonWriterAuto.openFile();
-           jsonWriterAuto.autoWrite(animalArray);
-           jsonWriterAuto.close();
-       } catch (FileNotFoundException e) {
-           System.out.println("Unable to write to file: " + AUTO_FILE);
-       }
-   }
+    //EFFECTS: save the user's favorites list to file.
+    private void autoSave() {
+        try {
+            jsonWriterAuto.openFile();
+            jsonWriterAuto.autoWrite(animalArray);
+            jsonWriterAuto.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + AUTO_FILE);
+        }
+    }
 
     //MODIFIES: this
     //EFFECTS: load the user's favorites list from file.
     private void autoLoad() {
         try {
-           animalArray = jsonReaderAuto.read();
+            animalArray = jsonReaderAuto.read();
             System.out.println("Loaded zoo");
         } catch (IOException e) {
             System.out.println("File Not Found. Couldn't load data.");
-            printWelcomeInstruction();
+            printSignUpInstruction();
         }
     }
-
 
 
 }

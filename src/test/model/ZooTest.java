@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,30 +16,25 @@ public class ZooTest {
         zoo = new Zoo();
     }
 
-    @Test
-    public void testAnimalNotInZoo() {
-        Animal animal = null;
-        try {
-            animal = zoo.getSpecificAnimal("Piii");
-            fail("AnimalNotFoundException Expected");
-
-        } catch (AnimalNotFoundException e) {
-            //pass
-        }
-        assertEquals(null, animal);
-    }
 
     @Test
     public void testAnimalInZoo() {
         Animal animal = null;
-        try {
-             animal = zoo.getSpecificAnimal("Polar Bear");
-
-        } catch (AnimalNotFoundException e) {
-            fail("Exception not expected.");
-        }
+        animal = zoo.getSpecificAnimal("Polar Bear");
         assertEquals("Polar Bear", animal.getName());
         assertEquals("Arctic Ocean", animal.getHabitat());
+    }
+
+    @Test
+    public void testGetAnimalList() {
+        assertEquals(11, zoo.getAnimalList().size());
+    }
+
+    @Test
+    public void testZootoJson() {
+        JSONObject json = zoo.toJson();
+        JSONArray animalList= json.getJSONArray("animalList");
+        assertEquals(11, animalList.length());
     }
 
 }

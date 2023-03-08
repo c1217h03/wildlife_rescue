@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -61,5 +62,40 @@ public class RhinoTest {
     public void testAddDonationMaximum(){
         sumatranRhino.addDonation(getMaxDonation());
         assertEquals(getMaxDonation(), sumatranRhino.getDonation());
+    }
+
+    @Test
+    public void testBlackRhinotoJson() {
+        JSONObject json = blackRhino.toJson();
+        String name = json.getString("name");
+        assertEquals(name, "Black Rhino");
+        String habitat = json.getString("habitat");
+        assertEquals(habitat, "Savannah");
+        Double population = json.getDouble("population");
+        assertEquals(population, 5500);
+        Double donations = json.getDouble("donations");
+        assertEquals(donations, 0);
+        String species = json.getString("species");
+        assertEquals(species, "Rhino");
+        String status = json.getString("status");
+        assertEquals(status, "CE");
+    }
+
+    @Test
+    public void testSumatranRhinotoJson() {
+        JSONObject json = sumatranRhino.toJson();
+        String name = json.getString("name");
+        assertEquals(name, "Sumatran Rhino");
+        String habitat = json.getString("habitat");
+        assertEquals(habitat, "Tropical Forests");
+        Double population = json.getDouble("population");
+        assertEquals(population, 80);
+        Double donations = json.getDouble("donations");
+        assertEquals(donations, 0);
+        String species = json.getString("species");
+        assertEquals(species, "Rhino");
+        String status = json.getString("status");
+        assertEquals(status, "CE");
+
     }
 }

@@ -22,6 +22,7 @@ public class JsonReader {
         this.source = source;
     }
 
+    //From JsonSerializationDemo
     // EFFECTS: reads workroom from file and returns it;
     // throws IOException if an error occurs reading data from file
     public Account read() throws IOException, NotValidCardException {
@@ -30,6 +31,7 @@ public class JsonReader {
         return parseAccount(jsonObject);
     }
 
+    //From JsonSerializationDemo
     // EFFECTS: reads source file as string and returns it
     private String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
@@ -81,6 +83,7 @@ public class JsonReader {
         String status = jsonObject.getString("status");
         String species = jsonObject.getString("species");
         Animal animal = new Animal(species, name, status, habitat, population);
+        animal.addDonation(donations);
         acc.addToFavorites(animal);
     }
 
@@ -94,6 +97,7 @@ public class JsonReader {
         String status = jsonObject.getString("status");
         String species = jsonObject.getString("species");
         Animal animal = new Animal(species, name, status, habitat, population);
+        animal.addDonation(donations);
         acc.addToDonatedTo(animal);
     }
 }

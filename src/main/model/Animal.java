@@ -12,7 +12,7 @@ public class Animal implements Writable {
     protected String status;
     protected String habitat;
 
-    //EFFECTS: constructs a new animal.
+    //EFFECTS: constructs a new animal with the given name, species, status, habitat, and population.
     public Animal(String species, String name, String status, String habitat, double population) {
         this.species = species;
         this.name = name;
@@ -21,7 +21,7 @@ public class Animal implements Writable {
         this.population = population;
     }
 
-
+    //MODIFIES: this
     //EFFECTS: add the given amount into the animal's donation.
     public void addDonation(double amount) {
         this.donations += amount;
@@ -58,7 +58,7 @@ public class Animal implements Writable {
         return this.species;
     }
 
-    //EFFECTS: returns the animal as a JSON object, saving only the donations.
+    //EFFECTS: returns the animal as a JSON object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

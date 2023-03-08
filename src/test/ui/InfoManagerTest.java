@@ -885,6 +885,37 @@ public class InfoManagerTest {
     }
 
     @Test
+    public void testLookAtAnimalNotInZoo() {
+        String userInput = String.format("sign up%sc%s4%sspecies" +
+                        "%srhinos%safrican rhino",
+                System.lineSeparator(),
+                System.lineSeparator(),
+                System.lineSeparator(),
+                System.lineSeparator(),
+                System.lineSeparator());
+        ByteArrayInputStream bais = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(bais);
+
+        String expected = "That animal doesn't exist.";
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(baos);
+        System.setOut(printStream);
+
+        try {
+            Main.main(null); // call the main method
+            fail();
+        } catch (NullPointerException e) {
+            //pass
+        }
+
+        String[] lines = baos.toString().split(System.lineSeparator());
+        String actual = lines[lines.length-1];
+
+        // checkout output
+        assertEquals(expected,actual);
+    }
+
+    @Test
     public void testLookAtRhinoAndWrongInputInput() {
         String userInput = String.format("sign up%sc%s4%sspecies" +
                         "%selephants%squit",

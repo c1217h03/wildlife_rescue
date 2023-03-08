@@ -7,7 +7,8 @@ import persistence.Writable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Zoo implements Writable{
+//class representing a collection of animals.
+public class Zoo implements Writable {
     private Rhino blackRhino;
     private Rhino sumatranRhino;
     private MarineAnimal narWhale;
@@ -20,8 +21,9 @@ public class Zoo implements Writable{
     private Elephant afElephant;
     private Elephant suElephant;
 
-    List<Animal> animalList;
+    private List<Animal> animalList;
 
+    //constructs a collection of animals.
     public Zoo() {
         initializingAnimals();
         animalList = new ArrayList<>();
@@ -37,19 +39,18 @@ public class Zoo implements Writable{
         animalList.add(snowLeopard);
         animalList.add(polarBear);
         animalList.add(giantPanda);
-
-
     }
 
     //EFFECTS:returns the given animal
-    //        if not found throws a not found exception.
-    public Animal getSpecificAnimal(String name) throws AnimalNotFoundException {
+    //        if not found returns a null object
+    public Animal getSpecificAnimal(String name) {
         for (Animal a : animalList) {
             if (a.getName().equals(name)) {
                 return a;
             }
         }
-        throw new AnimalNotFoundException();
+        System.out.println("That animal doesn't exist.");
+        return null;
     }
 
     //EFFECTS: returns the animals that are "critically" endangered from the animals list.
@@ -113,11 +114,114 @@ public class Zoo implements Writable{
 
     //REQUIRES: animal not null
     //MODIFIES: this
-    //EFFECTS: adds the given animal to the animal list.
+    //EFFECTS: adds re-initializes the animals.
+    //         used when autoloading the data.
     public void addToAnimalList(Animal animal) {
-        animalList.add(animal);
+        switch (animal.getName()) {
+            case "Black Rhino":
+            case "Sumatran Rhino":
+                rhinoReinitialized(animal);
+                break;
+            case "Tiger":
+            case "Snow Leopard":
+                bigCatsReinitialized(animal);
+                break;
+            case "African Forest Elephant":
+            case "Sumatran Elephant":
+                elephantsReinitialized(animal);
+                break;
+            case "Beluga Whale":
+            case "Whale Shark":
+            case "North Atlantic Right Whale":
+                marineAnimalsReinitialized(animal);
+                break;
+            case "Giant Panda":
+            case "Polar Bear":
+                bearsReinitialized(animal);
+                break;
+        }
     }
 
+    //REQUIRES: animal not null
+    //MODIFIES: this (giant panda or polar bear)
+    //EFFECTS: changes the donation of the bear to the given animal's current donations.
+    private void bearsReinitialized(Animal animal) {
+        switch (animal.getName()) {
+            case "Giant Panda":
+                giantPanda.addDonation(animal.getDonation());
+                break;
+            case "Polar Bear":
+                polarBear.addDonation(animal.getDonation());
+                break;
+        }
+    }
+
+    //REQUIRES: animal not null
+    //MODIFIES: this (black rhino or sumatran rhino)
+    //EFFECTS: changes the donation of the rhino to the given animal's current donations.
+    private void rhinoReinitialized(Animal animal) {
+        switch (animal.getName()) {
+            case "Black Rhino":
+                blackRhino.addDonation(animal.getDonation());
+                break;
+            case "Sumatran Rhino":
+                sumatranRhino.addDonation(animal.getDonation());
+                break;
+        }
+    }
+
+    //REQUIRES: animal not null
+    //MODIFIES: this (tiger or snow leopard)
+    //EFFECTS: changes the donation of the big cat to the given animal's current donations.
+    private void bigCatsReinitialized(Animal animal) {
+        switch (animal.getName()) {
+            case "Tiger":
+                tiger.addDonation(animal.getDonation());
+                break;
+            case "Snow Leopard":
+                snowLeopard.addDonation(animal.getDonation());
+                break;
+        }
+    }
+
+    //REQUIRES: animal not null
+    //MODIFIES: this (sumatran elephant or african forest elephant)
+    //EFFECTS: changes the donation of the elephant to the given animal's current donations.
+    private void elephantsReinitialized(Animal animal) {
+        switch (animal.getName()) {
+            case "African Forest Elephant":
+                afElephant.addDonation(animal.getDonation());
+                break;
+            case "Sumatran Elephant":
+                suElephant.addDonation(animal.getDonation());
+                break;
+        }
+    }
+
+    //REQUIRES: animal not null
+    //MODIFIES: this (beluga, whale shark or north atlantic right whale)
+    //EFFECTS: changes the donation of the marine animal to the given animal's current donations.
+    private void marineAnimalsReinitialized(Animal animal) {
+        switch (animal.getName()) {
+            case "Beluga Whale":
+                belugaWhale.addDonation(animal.getDonation());
+                break;
+            case "Whale Shark":
+                whaleShark.addDonation(animal.getDonation());
+                break;
+            case "North Atlantic Right Whale":
+                narWhale.addDonation(animal.getDonation());
+                break;
+        }
+    }
+
+    //EFFECT: returns the animalList
+    public List<Animal> getAnimalList() {
+        return animalList;
+    }
+
+
+    //EFFECTS: converts the collection of animals (Zoo) into a JSONObject
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -125,6 +229,7 @@ public class Zoo implements Writable{
         return json;
     }
 
+    //EFFECTS: converts the animalList into a JSONArray
     public JSONArray animalListToJson() {
         JSONArray jsonArray = new JSONArray();
 

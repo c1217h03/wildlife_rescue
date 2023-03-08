@@ -1,10 +1,13 @@
 package model;
 
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static model.Account.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -276,4 +279,18 @@ class AccountTest {
         assertEquals("4444 4444 4444 4444", testAcc.getCard());
     }
 
+    @Test
+    public void testtoJson() {
+        JSONObject json = acc1.toJson();
+        String username = json.getString("username");
+        String card = json.getString("card");
+        JSONArray faves = json.getJSONArray("favorites");
+        int favesSize = faves.length();
+        JSONArray donatedTo = json.getJSONArray("donatedto");
+        int donatedSize = donatedTo.length();
+        assertEquals(username, "user1");
+        assertEquals(card, "4536 0022 3144 1702");
+        assertEquals(0, favesSize);
+        assertEquals(0, donatedSize);
+    }
 }

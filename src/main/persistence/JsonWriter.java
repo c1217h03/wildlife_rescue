@@ -21,12 +21,14 @@ public class JsonWriter {
         this.destination = destination;
     }
 
+    //From JsonSerializationDemo
     //MODIFIES: this
     //EFFECTS: opens writer and throws the FileNotFoundException if the file cannot be found.
     public void openFile()  throws FileNotFoundException {
         writer = new PrintWriter(new File(destination));
     }
 
+    //From JsonSerializationDemo
     //MODIFIES: this
     //EFFECTS: writes the given account to file
     public void writeToFile(Account account) {
@@ -41,12 +43,14 @@ public class JsonWriter {
         saveToFile(json.toString(TAB));
     }
 
+    //From JsonSerializationDemo
     //MODIFIES: this
     //EFFECTS: closes the writer
     public void close() {
         writer.close();
     }
 
+    //From JsonSerializationDemo
     //MODIFIES: this
     //EFFECTS: writes the string to file
     public void saveToFile(String json) {

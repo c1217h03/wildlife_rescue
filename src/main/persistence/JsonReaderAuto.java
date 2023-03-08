@@ -10,13 +10,16 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+//class representing a reader for loading data for objects that are automatically saved.
 public class JsonReaderAuto {
     private String source;
 
+    //EFFECTS: constructs a JsonReaderAuto to read from given source file.
     public JsonReaderAuto(String source) {
         this.source = source;
     }
 
+    //From JsonSerializationDemo
     // EFFECTS: reads workroom from file and returns it;
     // throws IOException if an error occurs reading data from file
     public Zoo read() throws IOException {
@@ -25,6 +28,7 @@ public class JsonReaderAuto {
         return parseZoo(jsonObject);
     }
 
+    //From JsonSerializationDemo
     // EFFECTS: reads source file as string and returns it
     private String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
@@ -37,13 +41,13 @@ public class JsonReaderAuto {
     }
 
     // EFFECTS: parses workroom from JSON object and returns it
-    private Zoo parseZoo(JSONObject jsonObject)  {
-       Zoo zoo = new Zoo();
+    private Zoo parseZoo(JSONObject jsonObject) {
+        Zoo zoo = new Zoo();
         addAnimalList(zoo, jsonObject);
         return zoo;
     }
 
-    // MODIFIES: acc
+    // MODIFIES: zoo
     // EFFECTS: parses thingies from JSON object and adds them to account
     private void addAnimalList(Zoo zoo, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("animalList");
@@ -63,6 +67,7 @@ public class JsonReaderAuto {
         String status = jsonObject.getString("status");
         String species = jsonObject.getString("species");
         Animal animal = new Animal(species, name, status, habitat, population);
+        animal.addDonation(donations);
         zoo.addToAnimalList(animal);
     }
 }

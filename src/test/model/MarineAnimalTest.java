@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -78,5 +79,60 @@ public class MarineAnimalTest {
         narWhale.addDonation(getMaxDonation());
         assertEquals(getMaxDonation(), narWhale.getDonation());
     }
+
+    @Test
+    public void testBelugatoJson() {
+        JSONObject json = belugaWhale.toJson();
+        String name = json.getString("name");
+        assertEquals(name, "Beluga Whale");
+        String habitat = json.getString("habitat");
+        assertEquals(habitat, "Ocean");
+        Double population = json.getDouble("population");
+        assertEquals(population, 150000);
+        Double donations = json.getDouble("donations");
+        assertEquals(donations, 0);
+        String species = json.getString("species");
+        assertEquals(species, "Marine Animal");
+        String status = json.getString("status");
+        assertEquals(status, "NT");
+
+    }
+
+    @Test
+    public void testWhaleSharktoJson() {
+        JSONObject json = whaleShark.toJson();
+        String name = json.getString("name");
+        assertEquals(name, "Whale Shark");
+        String habitat = json.getString("habitat");
+        assertEquals(habitat, "Ocean");
+        Double population = json.getDouble("population");
+        assertEquals(population, 200000);
+        Double donations = json.getDouble("donations");
+        assertEquals(donations, 0);
+        String species = json.getString("species");
+        assertEquals(species, "Marine Animal");
+        String status = json.getString("status");
+        assertEquals(status, "E");
+
+    }
+
+    @Test
+    public void testNarWhaletoJson() {
+        JSONObject json = narWhale.toJson();
+        String name = json.getString("name");
+        assertEquals(name, "North Atlantic Right Whale");
+        String habitat = json.getString("habitat");
+        assertEquals(habitat, "Ocean");
+        Double population = json.getDouble("population");
+        assertEquals(population, 366);
+        Double donations = json.getDouble("donations");
+        assertEquals(donations, 0);
+        String species = json.getString("species");
+        assertEquals(species, "Marine Animal");
+        String status = json.getString("status");
+        assertEquals(status, "CE");
+
+    }
+
 
 }
