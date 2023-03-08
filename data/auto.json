@@ -1,2 +1,90 @@
 {"animalList": [
+    {
+        "habitat": "Savannah",
+        "donations": 0,
+        "species": "Rhino",
+        "name": "Black Rhino",
+        "population": 5500,
+        "status": "CE"
+    },
+    {
+        "habitat": "Tropical Forests",
+        "donations": 0,
+        "species": "Rhino",
+        "name": "Sumatran Rhino",
+        "population": 80,
+        "status": "CE"
+    },
+    {
+        "habitat": "Tropical Forests",
+        "donations": 0,
+        "species": "Elephant",
+        "name": "Sumatran Elephant",
+        "population": 2400,
+        "status": "CE"
+    },
+    {
+        "habitat": "African Forests",
+        "donations": 0,
+        "species": "Elephant",
+        "name": "African Forest Elephant",
+        "population": 415000,
+        "status": "CE"
+    },
+    {
+        "habitat": "Ocean",
+        "donations": 400,
+        "species": "Marine Animal",
+        "name": "North Atlantic Right Whale",
+        "population": 366,
+        "status": "CE"
+    },
+    {
+        "habitat": "Ocean",
+        "donations": 0,
+        "species": "Marine Animal",
+        "name": "Beluga Whale",
+        "population": 150000,
+        "status": "NT"
+    },
+    {
+        "habitat": "Ocean",
+        "donations": 0,
+        "species": "Marine Animal",
+        "name": "Whale Shark",
+        "population": 200000,
+        "status": "E"
+    },
+    {
+        "habitat": "Rainforests",
+        "donations": 0,
+        "species": "Big Cat",
+        "name": "Tiger",
+        "population": 4500,
+        "status": "E"
+    },
+    {
+        "habitat": "High Mountains",
+        "donations": 0,
+        "species": "Big Cat",
+        "name": "Snow Leopard",
+        "population": 5000,
+        "status": "V"
+    },
+    {
+        "habitat": "Arctic Ocean",
+        "donations": 0,
+        "species": "Bear",
+        "name": "Polar Bear",
+        "population": 265000,
+        "status": "V"
+    },
+    {
+        "habitat": "Chinese Forests",
+        "donations": 0,
+        "species": "Bear",
+        "name": "Giant Panda",
+        "population": 1864,
+        "status": "V"
+    }
 ]}

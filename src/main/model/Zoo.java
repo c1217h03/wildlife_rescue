@@ -116,102 +116,112 @@ public class Zoo implements Writable {
     //MODIFIES: this
     //EFFECTS: adds re-initializes the animals.
     //         used when autoloading the data.
-    public void addToAnimalList(Animal animal) {
-        switch (animal.getName()) {
-            case "Black Rhino":
-            case "Sumatran Rhino":
+    //         returns true if the animal is found.
+    //         false if it doesn't exist.
+    public boolean addToAnimalList(Animal animal) {
+        switch (animal.getSpecies()) {
+            case "Rhino":
                 rhinoReinitialized(animal);
-                break;
-            case "Tiger":
-            case "Snow Leopard":
+                return true;
+            case "Big Cat":
                 bigCatsReinitialized(animal);
-                break;
-            case "African Forest Elephant":
-            case "Sumatran Elephant":
+                return true;
+            case "Elephant":
                 elephantsReinitialized(animal);
-                break;
-            case "Beluga Whale":
-            case "Whale Shark":
-            case "North Atlantic Right Whale":
+                return true;
+            case "Marine Animal":
                 marineAnimalsReinitialized(animal);
-                break;
-            case "Giant Panda":
-            case "Polar Bear":
+                return true;
+            case "Bear":
                 bearsReinitialized(animal);
-                break;
+                return true;
+            default:
+                return false;
         }
     }
 
     //REQUIRES: animal not null
     //MODIFIES: this (giant panda or polar bear)
     //EFFECTS: changes the donation of the bear to the given animal's current donations.
-    private void bearsReinitialized(Animal animal) {
+    //         returns true if animal is found
+    public boolean bearsReinitialized(Animal animal) {
         switch (animal.getName()) {
             case "Giant Panda":
                 giantPanda.addDonation(animal.getDonation());
-                break;
+                return true;
             case "Polar Bear":
                 polarBear.addDonation(animal.getDonation());
-                break;
+                return true;
+            default:
+                return false;
         }
     }
 
     //REQUIRES: animal not null
     //MODIFIES: this (black rhino or sumatran rhino)
     //EFFECTS: changes the donation of the rhino to the given animal's current donations.
-    private void rhinoReinitialized(Animal animal) {
+    //         returns true if animal is found
+    public boolean rhinoReinitialized(Animal animal) {
         switch (animal.getName()) {
             case "Black Rhino":
                 blackRhino.addDonation(animal.getDonation());
-                break;
+                return true;
             case "Sumatran Rhino":
                 sumatranRhino.addDonation(animal.getDonation());
-                break;
+                return true;
+            default:
+                return false;
         }
     }
 
     //REQUIRES: animal not null
     //MODIFIES: this (tiger or snow leopard)
     //EFFECTS: changes the donation of the big cat to the given animal's current donations.
-    private void bigCatsReinitialized(Animal animal) {
+    public boolean bigCatsReinitialized(Animal animal) {
         switch (animal.getName()) {
             case "Tiger":
                 tiger.addDonation(animal.getDonation());
-                break;
+                return true;
             case "Snow Leopard":
                 snowLeopard.addDonation(animal.getDonation());
-                break;
+                return true;
+            default:
+                return false;
         }
     }
 
     //REQUIRES: animal not null
     //MODIFIES: this (sumatran elephant or african forest elephant)
     //EFFECTS: changes the donation of the elephant to the given animal's current donations.
-    private void elephantsReinitialized(Animal animal) {
+    public boolean elephantsReinitialized(Animal animal) {
         switch (animal.getName()) {
             case "African Forest Elephant":
                 afElephant.addDonation(animal.getDonation());
-                break;
+                return true;
             case "Sumatran Elephant":
                 suElephant.addDonation(animal.getDonation());
-                break;
+                return true;
+            default:
+                return false;
         }
     }
 
     //REQUIRES: animal not null
     //MODIFIES: this (beluga, whale shark or north atlantic right whale)
     //EFFECTS: changes the donation of the marine animal to the given animal's current donations.
-    private void marineAnimalsReinitialized(Animal animal) {
+    public boolean marineAnimalsReinitialized(Animal animal) {
         switch (animal.getName()) {
             case "Beluga Whale":
                 belugaWhale.addDonation(animal.getDonation());
-                break;
+                return true;
             case "Whale Shark":
                 whaleShark.addDonation(animal.getDonation());
-                break;
+                return true;
             case "North Atlantic Right Whale":
                 narWhale.addDonation(animal.getDonation());
-                break;
+                return true;
+            default:
+                return false;
         }
     }
 
