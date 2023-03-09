@@ -109,7 +109,9 @@ public class Zoo implements Writable {
                 "Tropical Forests", 2400);
         this.whaleShark = new MarineAnimal("Whale Shark", "E", "Ocean",
                 200000);
-
+        //5 criticals
+        //7 endangered
+        //3 vulnerables
     }
 
     //REQUIRES: animal not null

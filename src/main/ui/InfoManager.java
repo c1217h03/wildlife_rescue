@@ -398,7 +398,7 @@ public class InfoManager {
     private void printRhinosInstruction() {
         System.out.println("To see the Black Rhino enter: " + BLACK_RHINO);
         System.out.printf("To see the Sumatran Rhino enter: " + SUMATRAN_RHINO);
-        System.out.println("To see the African Rhino enter: " + AFRICAN_RHINO);
+        System.out.println("\nTo see the African Rhino enter: " + AFRICAN_RHINO);
         System.out.println("\nTo go back enter: " + BACK_COMMAND);
         System.out.println("To quit enter: " + QUIT);
         handleRhinosInstructions();

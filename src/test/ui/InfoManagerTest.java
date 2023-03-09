@@ -86,6 +86,31 @@ public class InfoManagerTest {
     }
 
     @Test
+    public void testSigningUpWithInvalidCardAtFirstInput() {
+        String userInput = String.format("sign up%sc%s3%sc%s4%squit",
+                System.lineSeparator(),
+                System.lineSeparator(),
+                System.lineSeparator(),
+                System.lineSeparator(),
+                System.lineSeparator());
+        ByteArrayInputStream bais = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(bais);
+
+        String expected = "Quitting...";
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(baos);
+        System.setOut(printStream);
+
+        Main.main(null); // call the main method
+
+        String[] lines = baos.toString().split(System.lineSeparator());
+        String actual = lines[lines.length-1];
+
+        // checkout output
+        assertEquals(expected,actual);
+    }
+
+    @Test
     public void testLookingAtFaves() {
         String userInput = String.format("sign up%sc%s4%sspecies%squit",
                 System.lineSeparator(),
