@@ -1,13 +1,20 @@
 {
     "favorites": [{
-        "habitat": "Savannah",
-        "donations": 4000,
-        "species": "Rhino",
-        "name": "Black Rhino",
-        "population": 5500,
-        "status": "CE"
+        "habitat": "Chinese Forests",
+        "donations": 0,
+        "species": "Bear",
+        "name": "Giant Panda",
+        "population": 1864,
+        "status": "V"
     }],
-    "donatedto": [],
+    "donatedto": [{
+        "habitat": "Rainforests",
+        "donations": 650,
+        "species": "Big Cat",
+        "name": "Tiger",
+        "population": 4500,
+        "status": "E"
+    }],
     "card": "4",
-    "username": "c"
+    "username": "Charmaine"
 }
