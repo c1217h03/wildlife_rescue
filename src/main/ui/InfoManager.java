@@ -549,7 +549,6 @@ public class InfoManager {
         }
     }
 
-
     //FROM FitLifeGymChain
     //EFFECTS: quit the program.
     private void endProgram() {

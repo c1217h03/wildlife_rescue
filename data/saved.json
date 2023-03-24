@@ -1,20 +1,13 @@
 {
-    "favorites": [{
-        "habitat": "Chinese Forests",
-        "donations": 0,
-        "species": "Bear",
-        "name": "Giant Panda",
-        "population": 1864,
-        "status": "V"
-    }],
+    "favorites": [],
     "donatedto": [{
         "habitat": "Rainforests",
-        "donations": 650,
+        "donations": 50,
         "species": "Big Cat",
         "name": "Tiger",
         "population": 4500,
         "status": "E"
     }],
     "card": "4",
-    "username": "Charmaine"
+    "username": "CC"
 }

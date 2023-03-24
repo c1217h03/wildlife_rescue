@@ -1,7 +1,7 @@
 {"animalList": [
     {
         "habitat": "Savannah",
-        "donations": 4000,
+        "donations": 0,
         "species": "Rhino",
         "name": "Black Rhino",
         "population": 5500,
@@ -25,7 +25,7 @@
     },
     {
         "habitat": "African Forests",
-        "donations": 1000,
+        "donations": 0,
         "species": "Elephant",
         "name": "African Forest Elephant",
         "population": 415000,
@@ -33,7 +33,7 @@
     },
     {
         "habitat": "Ocean",
-        "donations": 650,
+        "donations": 0,
         "species": "Marine Animal",
         "name": "North Atlantic Right Whale",
         "population": 366,
@@ -57,7 +57,7 @@
     },
     {
         "habitat": "Rainforests",
-        "donations": 650,
+        "donations": 80,
         "species": "Big Cat",
         "name": "Tiger",
         "population": 4500,
