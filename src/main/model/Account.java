@@ -57,6 +57,7 @@ public class Account implements Writable {
         (this.favorites).add(animal);
     }
 
+
     //REQUIRES: the account's favorite list is not empty
     //MODIFIES: this
     //EFFECTS: removes the given animal from the account's favorites list.

@@ -57,7 +57,7 @@
     },
     {
         "habitat": "Rainforests",
-        "donations": 80,
+        "donations": 90,
         "species": "Big Cat",
         "name": "Tiger",
         "population": 4500,
@@ -81,7 +81,7 @@
     },
     {
         "habitat": "Chinese Forests",
-        "donations": 0,
+        "donations": 50,
         "species": "Bear",
         "name": "Giant Panda",
         "population": 1864,

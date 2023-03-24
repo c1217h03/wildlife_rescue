@@ -23,6 +23,7 @@ public class AnimalPanel extends JPanel implements ActionListener {
 
     private JButton faves;
     private JButton donate;
+    private JButton remove;
 
     private Account account;
     private Animal a;
@@ -35,7 +36,7 @@ public class AnimalPanel extends JPanel implements ActionListener {
         super();
         this.setSize(WildlifeRescueUI.WIDTH, WildlifeRescueUI.HEIGHT);
         this.setBackground(Color.WHITE);
-        this.setLayout(new GridLayout(6, 1));
+        this.setLayout(new GridLayout(8, 1));
 
         this.account = account;
         this.zoo = zoo;
@@ -44,15 +45,21 @@ public class AnimalPanel extends JPanel implements ActionListener {
         a = zoo.getSpecificAnimal(animal);
 
         name = new JLabel("\n" + a.getName() + "\n");
-        name.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+        name.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 50));
+        name.setForeground(new Color(54, 94, 17));
+
         status = new JLabel("\nStatus: " + a.getStatus());
         status.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+
         species = new JLabel("\nSpecies:" + a.getSpecies());
         species.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+
         population = new JLabel("\nPopulation: " + a.getPopulation());
         population.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+
         habitat = new JLabel("\nHabitat: " + a.getHabitat());
         habitat.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+
         donations = new JLabel("\nCurrent Donations: " + a.getDonation());
         donations.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
 
@@ -72,12 +79,20 @@ public class AnimalPanel extends JPanel implements ActionListener {
         faves = new JButton("Add To Favorites");
         faves.addActionListener(this);
         faves.setVisible(true);
+
         donate = new JButton("Donate");
         donate.addActionListener(this);
         donate.setVisible(true);
 
+        remove = new JButton("Remove From Favorites");
+        remove.addActionListener(this);
+        remove.setHorizontalAlignment(SwingConstants.CENTER);
+        remove.setVisible(true);
+
+
         this.add(faves);
         this.add(donate);
+        this.add(remove);
     }
 
     private String setDonatingPane() {
@@ -92,7 +107,10 @@ public class AnimalPanel extends JPanel implements ActionListener {
         } else if (e.getSource() == donate) {
             String amount = setDonatingPane();
             account.donate(Integer.parseInt(amount), a);
+            donations.setText("\nCurrent Donations: " + a.getDonation());
             autoSave();
+        } else if (e.getSource() == remove) {
+            account.removeFromFavorites(a);
         }
     }
 
