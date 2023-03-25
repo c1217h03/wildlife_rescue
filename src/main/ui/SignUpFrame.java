@@ -58,7 +58,7 @@ public class SignUpFrame extends JFrame implements ActionListener {
                 Account account = new Account(name, card);
                 new WildlifeRescueUI(account);
                 this.dispose();
-            } catch(NotValidCardException exception) {
+            } catch (NotValidCardException exception) {
                 JOptionPane.showMessageDialog(null, "Invalid card. Try again.", null,
                         JOptionPane.ERROR_MESSAGE);
                 new SignUpFrame();

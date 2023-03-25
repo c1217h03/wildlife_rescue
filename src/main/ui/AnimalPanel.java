@@ -21,14 +21,18 @@ public class AnimalPanel extends JPanel implements ActionListener {
 
     private JOptionPane donatingPane;
 
+    private JPanel masterPanel;
+    private CardLayout cl;
+
     private JButton faves;
     private JButton donate;
     private JButton remove;
 
     private Account account;
-    private Animal a;
+    private Animal animal;
     private Zoo zoo;
     private JsonWriter jsonWriterAuto;
+
 
     private static final String AUTO_FILE = "./data/auto.json";
 
@@ -36,32 +40,14 @@ public class AnimalPanel extends JPanel implements ActionListener {
         super();
         this.setSize(WildlifeRescueUI.WIDTH, WildlifeRescueUI.HEIGHT);
         this.setBackground(Color.WHITE);
-        this.setLayout(new GridLayout(8, 1));
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         this.account = account;
         this.zoo = zoo;
         this.jsonWriterAuto = new JsonWriter(AUTO_FILE);
 
-        a = zoo.getSpecificAnimal(animal);
-
-        name = new JLabel("\n" + a.getName() + "\n");
-        name.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 50));
-        name.setForeground(new Color(54, 94, 17));
-
-        status = new JLabel("\nStatus: " + a.getStatus());
-        status.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
-
-        species = new JLabel("\nSpecies:" + a.getSpecies());
-        species.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
-
-        population = new JLabel("\nPopulation: " + a.getPopulation());
-        population.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
-
-        habitat = new JLabel("\nHabitat: " + a.getHabitat());
-        habitat.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
-
-        donations = new JLabel("\nCurrent Donations: " + a.getDonation());
-        donations.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+        this.animal = zoo.getSpecificAnimal(animal);
+        initializeLabels();
 
         this.add(name);
         this.add(status);
@@ -73,6 +59,27 @@ public class AnimalPanel extends JPanel implements ActionListener {
 
         initializeButtons();
 
+    }
+
+    private void initializeLabels() {
+        name = new JLabel("\n" + this.animal.getName() + "\n");
+        name.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 50));
+        name.setForeground(new Color(54, 94, 17));
+
+        status = new JLabel("\nStatus: " + this.animal.getStatus());
+        status.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+
+        species = new JLabel("\nSpecies:" + this.animal.getSpecies());
+        species.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+
+        population = new JLabel("\nPopulation: " + this.animal.getPopulation());
+        population.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+
+        habitat = new JLabel("\nHabitat: " + this.animal.getHabitat());
+        habitat.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
+
+        donations = new JLabel("\nCurrent Donations: " + this.animal.getDonation());
+        donations.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
     }
 
     private void initializeButtons() {
@@ -103,14 +110,15 @@ public class AnimalPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == faves) {
-            account.addToFavorites(a);
+            account.addToFavorites(animal);
         } else if (e.getSource() == donate) {
             String amount = setDonatingPane();
-            account.donate(Integer.parseInt(amount), a);
-            donations.setText("\nCurrent Donations: " + a.getDonation());
+            account.donate(Integer.parseInt(amount), animal);
+            account.addToDonatedTo(animal);
+            donations.setText("\nCurrent Donations: " + animal.getDonation());
             autoSave();
         } else if (e.getSource() == remove) {
-            account.removeFromFavorites(a);
+            account.removeFromFavorites(animal);
         }
     }
 

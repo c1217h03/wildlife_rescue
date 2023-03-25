@@ -17,7 +17,7 @@
     },
     {
         "habitat": "Tropical Forests",
-        "donations": 0,
+        "donations": 110,
         "species": "Elephant",
         "name": "Sumatran Elephant",
         "population": 2400,
@@ -25,7 +25,7 @@
     },
     {
         "habitat": "African Forests",
-        "donations": 0,
+        "donations": 150,
         "species": "Elephant",
         "name": "African Forest Elephant",
         "population": 415000,
@@ -33,7 +33,7 @@
     },
     {
         "habitat": "Ocean",
-        "donations": 0,
+        "donations": 100,
         "species": "Marine Animal",
         "name": "North Atlantic Right Whale",
         "population": 366,
@@ -49,7 +49,7 @@
     },
     {
         "habitat": "Ocean",
-        "donations": 0,
+        "donations": 50,
         "species": "Marine Animal",
         "name": "Whale Shark",
         "population": 200000,
@@ -57,7 +57,7 @@
     },
     {
         "habitat": "Rainforests",
-        "donations": 90,
+        "donations": 250,
         "species": "Big Cat",
         "name": "Tiger",
         "population": 4500,
@@ -65,7 +65,7 @@
     },
     {
         "habitat": "High Mountains",
-        "donations": 0,
+        "donations": 100,
         "species": "Big Cat",
         "name": "Snow Leopard",
         "population": 5000,
@@ -81,7 +81,7 @@
     },
     {
         "habitat": "Chinese Forests",
-        "donations": 50,
+        "donations": 0,
         "species": "Bear",
         "name": "Giant Panda",
         "population": 1864,

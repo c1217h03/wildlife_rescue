@@ -8,7 +8,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SpeciesPanel extends JPanel implements ActionListener {
     private Zoo zoo;
@@ -16,58 +18,66 @@ public class SpeciesPanel extends JPanel implements ActionListener {
     private WildlifeRescueUI parentFrame;
     private Account account;
 
-    private JButton tigerButton;
-    private JButton snowLeopardButton;
-    private JButton giantPandaButton;
-    private JButton polarBearButton;
-    private JButton blackRhinoButton;
-    private JButton sumatranrRhinoButton;
-    private JButton sumatranElephantButton;
-    private JButton afElephantButton;
-    private JButton whaleSharkButton;
-    private JButton belugaWhaleButton;
-    private JButton narWhaleButton;
+    private AnimalButtons animalButtons;
+
+    private AnimalButton tigerButton;
+    private AnimalButton snowLeopardButton;
+    private AnimalButton giantPandaButton;
+    private AnimalButton polarBearButton;
+    private AnimalButton blackRhinoButton;
+    private AnimalButton sumatranRhinoButton;
+    private AnimalButton sumatranElephantButton;
+    private AnimalButton afElephantButton;
+    private AnimalButton whaleSharkButton;
+    private AnimalButton belugaWhaleButton;
+    private AnimalButton narWhaleButton;
 
 
+    private JPanel masterPanel;
+    private CardLayout cl;
 
-    public SpeciesPanel(WildlifeRescueUI parent, Account account, Zoo zoo) {
+
+    public SpeciesPanel(WildlifeRescueUI parent, Account account, Zoo zoo, JPanel master, CardLayout cards) {
         this.zoo = zoo;
         animalList = zoo.getAnimalList();
+        this.animalButtons = new AnimalButtons();
         parentFrame = parent;
         this.account = account;
+        this.masterPanel = master;
+        this.cl = cards;
         this.setOpaque(true);
         this.setBackground(new Color(51, 94, 17));
         this.setVisible(true);
         this.setBounds(500, 900, 750, 900);
         this.setLayout(new GridLayout(animalList.size(), 1));
+
         initializeAnimalButtons();
         addButtons(this);
     }
 
     //EFFECTS: initializes buttons that would lead to an animal.
     private void initializeAnimalButtons() {
-        tigerButton = new AnimalButton("./data/tigerC.png", null);
+        tigerButton = animalButtons.getAnimalButton("Tiger");
         tigerButton.addActionListener(this);
-        snowLeopardButton = new AnimalButton("./data/snowleopardC.jpeg", null);
+        snowLeopardButton = animalButtons.getAnimalButton("Snow Leopard");
         snowLeopardButton.addActionListener(this);
-        giantPandaButton = new AnimalButton("./data/giantpandaC.jpeg", null);
+        giantPandaButton = animalButtons.getAnimalButton("Giant Panda");
         giantPandaButton.addActionListener(this);
-        polarBearButton = new AnimalButton("./data/polarbearC.jpeg", null);
+        polarBearButton = animalButtons.getAnimalButton("Polar Bear");
         polarBearButton.addActionListener(this);
-        blackRhinoButton = new AnimalButton("./data/blackrhinoC.jpeg", null);
+        blackRhinoButton = animalButtons.getAnimalButton("Black Rhino");
         blackRhinoButton.addActionListener(this);
-        sumatranrRhinoButton = new AnimalButton("./data/sumatranrhinoC.jpeg", null);
-        sumatranrRhinoButton.addActionListener(this);
-        sumatranElephantButton = new AnimalButton("./data/sumatranelephantC.jpeg",
-                null);
+        sumatranRhinoButton = animalButtons.getAnimalButton("Sumatran Rhino");
+        sumatranRhinoButton.addActionListener(this);
+        sumatranElephantButton = animalButtons.getAnimalButton("Sumatran Elephant");
         sumatranElephantButton.addActionListener(this);
-        afElephantButton = new AnimalButton("./data/afelephantC.jpeg", null);
+        afElephantButton = animalButtons.getAnimalButton("African Forest Elephant");
         afElephantButton.addActionListener(this);
-        whaleSharkButton = new AnimalButton("./data/whalesharkC.jpeg", null);
+        whaleSharkButton = animalButtons.getAnimalButton("Whale Shark");
         whaleSharkButton.addActionListener(this);
-        belugaWhaleButton = new AnimalButton("./data/belugaC.jpeg", null);
+        belugaWhaleButton = animalButtons.getAnimalButton("Beluga Whale");
         belugaWhaleButton.addActionListener(this);
-        narWhaleButton = new AnimalButton("./data/narwhaleC.jpeg", null);
+        narWhaleButton = animalButtons.getAnimalButton("North Atlantic Right Whale");
         narWhaleButton.addActionListener(this);
     }
 
@@ -77,7 +87,7 @@ public class SpeciesPanel extends JPanel implements ActionListener {
         panel.add(giantPandaButton);
         panel.add(polarBearButton);
         panel.add(blackRhinoButton);
-        panel.add(sumatranrRhinoButton);
+        panel.add(sumatranRhinoButton);
         panel.add(sumatranElephantButton);
         panel.add(afElephantButton);
         panel.add(whaleSharkButton);
@@ -86,112 +96,94 @@ public class SpeciesPanel extends JPanel implements ActionListener {
 
     }
 
-    public void handleActions(WildlifeRescueUI parent, ActionEvent e) {
+    public void handleActions(ActionEvent e) {
         actionPerformed(e);
     }
 
-    private void hideButtons() {
-        tigerButton.hide();
-        snowLeopardButton.hide();
-        giantPandaButton.hide();
-        polarBearButton.hide();
-        blackRhinoButton.hide();
-        sumatranElephantButton.hide();
-        sumatranrRhinoButton.hide();
-        afElephantButton.hide();
-        whaleSharkButton.hide();
-        narWhaleButton.hide();
-        belugaWhaleButton.hide();
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Object source = e.getSource();
-        if (source == tigerButton || source == snowLeopardButton) {
+        AnimalButton source = (AnimalButton) e.getSource();
+        if (source.equals(tigerButton) || source.equals(snowLeopardButton)) {
             handleBigCats(e);
-        } else if (source == giantPandaButton || source == polarBearButton) {
+        } else if (source.equals(giantPandaButton) || source.equals(polarBearButton)) {
             handleBears(e);
-        } else if (source == blackRhinoButton || source == sumatranrRhinoButton) {
+        } else if (source.equals(blackRhinoButton) || source.equals(sumatranRhinoButton)) {
             handleRhinos(e);
-        } else if (source == afElephantButton || source == sumatranElephantButton) {
+        } else if (source.equals(afElephantButton) || source.equals(sumatranElephantButton)) {
             handleElephants(e);
-        } else  {
+        } else {
             handleMarine(e);
         }
     }
 
     private void handleBigCats(ActionEvent e) {
-        Object source = e.getSource();
-        parentFrame.getDummyPane().setVisible(false);
+        AnimalButton source = (AnimalButton) e.getSource();
         AnimalPanel panel = null;
-        if (source == tigerButton) {
+        if (source.equals(tigerButton)) {
             panel = new AnimalPanel("Tiger", zoo, account);
-        }
-        else {
+        } else {
             panel = new AnimalPanel("Snow Leopard", zoo, account);
         }
         panel.setVisible(true);
-        JPanel sidebar = parentFrame.getSideBar();
-        parentFrame.add(new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, sidebar, panel));
+        masterPanel.add(panel, "7");
+        cl.show(masterPanel, "7");
 
     }
 
     private void handleBears(ActionEvent e) {
-        Object source = e.getSource();
-        parentFrame.getDummyPane().setVisible(false);
+        AnimalButton source = (AnimalButton) e.getSource();
         AnimalPanel panel = null;
-        if (source == giantPandaButton) {
+        if (source.equals(giantPandaButton)) {
             panel = new AnimalPanel("Giant Panda", zoo, account);
         } else {
             panel = new AnimalPanel("Polar Bear", zoo, account);
         }
         panel.setVisible(true);
-        JPanel sidebar = parentFrame.getSideBar();
-        parentFrame.add(new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, sidebar, panel));
+        masterPanel.add(panel, "7");
+        cl.show(masterPanel, "7");
     }
 
     private void handleRhinos(ActionEvent e) {
-        Object source = e.getSource();
-        parentFrame.getDummyPane().setVisible(false);
+        AnimalButton source = (AnimalButton) e.getSource();
         AnimalPanel panel = null;
-        if (source == giantPandaButton) {
+        if (source.equals(blackRhinoButton)) {
             panel = new AnimalPanel("Black Rhino", zoo, account);
         } else {
             panel = new AnimalPanel("Sumatran Rhino", zoo, account);
         }
         panel.setVisible(true);
-        JPanel sidebar = parentFrame.getSideBar();
-        parentFrame.add(new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, sidebar, panel));
+        masterPanel.add(panel, "7");
+        cl.show(masterPanel, "7");
     }
 
     private void handleElephants(ActionEvent e) {
-        Object source = e.getSource();
-        parentFrame.getDummyPane().setVisible(false);
+        AnimalButton source = (AnimalButton) e.getSource();
         AnimalPanel panel = null;
-        if (source == giantPandaButton) {
+        if (source.equals(afElephantButton)) {
             panel = new AnimalPanel("African Forest Elephant", zoo, account);
         } else {
             panel = new AnimalPanel("Sumatran Elephant", zoo, account);
         }
         panel.setVisible(true);
-        JPanel sidebar = parentFrame.getSideBar();
-        parentFrame.add(new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, sidebar, panel));
+        masterPanel.add(panel, "7");
+        cl.show(masterPanel, "7");
     }
 
     private void handleMarine(ActionEvent e) {
-        Object source = e.getSource();
-        parentFrame.getDummyPane().setVisible(false);
+        AnimalButton source = (AnimalButton) e.getSource();
         AnimalPanel panel = null;
-        if (source == giantPandaButton) {
+        if (source.equals(belugaWhaleButton)) {
             panel = new AnimalPanel("Beluga Whale", zoo, account);
-        } else if (source == whaleSharkButton) {
+        } else if (source.equals(whaleSharkButton)) {
             panel = new AnimalPanel("Whale Shark", zoo, account);
         } else {
             panel = new AnimalPanel("North Atlantic Right Whale", zoo, account);
         }
         panel.setVisible(true);
-        JPanel sidebar = parentFrame.getSideBar();
-        parentFrame.add(new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, sidebar, panel));
+        masterPanel.add(panel, "7");
+        cl.show(masterPanel, "7");
     }
+
 }
 

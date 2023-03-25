@@ -2,13 +2,9 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class FavoritesPanel extends JPanel implements ActionListener {
-    private SpeciesPanel grid;
-
-    public FavoritesPanel(SpeciesPanel grid) {
+public class CriticalPanel extends JPanel {
+    public CriticalPanel() {
         super();
         this.setOpaque(true);
         this.setSize(WildlifeRescueUI.WIDTH, WildlifeRescueUI.HEIGHT);
@@ -17,12 +13,6 @@ public class FavoritesPanel extends JPanel implements ActionListener {
         this.setBackground(new Color(51, 94, 17));
         this.setVisible(true);
         this.setBounds(500, 900, 750, 900);
-        this.setLayout(new GridLayout(11, 1));
-        this.grid = grid;
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        grid.handleActions(e);
+        this.setLayout(new GridLayout(getComponentCount(), 1));
     }
 }

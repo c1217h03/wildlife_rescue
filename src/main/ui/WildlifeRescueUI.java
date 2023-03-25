@@ -12,8 +12,9 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
-public class WildlifeRescueUI extends JFrame implements ActionListener {
+public class WildlifeRescueUI extends JFrame {
     public static final int WIDTH = 800;
     public static final int HEIGHT = 900;
 
@@ -22,73 +23,70 @@ public class WildlifeRescueUI extends JFrame implements ActionListener {
     private Zoo zoo;
     private List<Animal> animalList;
 
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
     private JsonWriter jsonWriterAuto;
     private JsonReaderAuto jsonReaderAuto;
 
     private JPanel sideBar;
+    private JPanel masterPanel;
 
     private JSplitPane dummyPane;
     private SpeciesPanel grid;
+    private FavoritesPanel favoritesPanel;
+    private DonatedToPanel donatedToPanel;
+    private CriticalPanel criticalPanel;
+    private EndangeredPanel endangeredPanel;
+    private VulnerablePanel vulnerablePanel;
+    private CardLayout cardLayout;
 
-    private JButton save;
-    private JButton load;
 
-    private static final String FILENAME = "./data/saved.json";
+    private JScrollPane scrollPane;
+
+
     private static final String AUTO_FILE = "./data/auto.json";
 
     public WildlifeRescueUI(Account account) {
         super("Wildlife Rescue");
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.account = account;
-        zoo = new Zoo();
-        jsonReader = new JsonReader(FILENAME);
-        jsonWriter = new JsonWriter(FILENAME);
-        jsonReaderAuto = new JsonReaderAuto(AUTO_FILE);
-        jsonWriterAuto = new JsonWriter(AUTO_FILE);
-        autoLoad();
 
-
-
-        this.setSize(WIDTH, HEIGHT);
-        this.setVisible(true);
-        this.setBackground(new Color(126, 166, 96));
+        initializeFrame(account);
+        initializePanels();
 
         animalList = zoo.getAnimalList();
+        masterPanel = new JPanel();
+        cardLayout = new CardLayout();
+        masterPanel.setLayout(cardLayout);
 
         JLabel welcomeString = setWelcomeLabel();
 
         grid = setGridPanel();
 
-        JScrollPane scrollPane = new JScrollPane(grid);
+        initializeSideBar(welcomeString);
+
+        scrollPane = new JScrollPane(grid);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        sideBar = new JPanel();
-        sideBar.setSize(350, HEIGHT);
-        sideBar.setAlignmentX(Component.LEFT_ALIGNMENT);
+        addPanelsToMasterPanel();
 
-        sideBar.add(welcomeString);
-        JPanel dummy = new JPanel(new GridLayout(1, 2, 10, 0));
-        initializeOtherButtons(dummy);
-        sideBar.add(dummy);
-
-        dummyPane =  new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, sideBar, scrollPane);
+        dummyPane =  new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, sideBar, masterPanel);
         dummyPane.setDividerLocation(350);
+        cardLayout.first(masterPanel);
         this.add(dummyPane);
 
+
     }
 
-    //EFFECTS: initializes other buttons aside from animal buttons.
-    private void initializeOtherButtons(JPanel panel) {
-        save = new JButton("Save");
-        save.addActionListener(this);
-        load = new JButton("Load");
-        load.addActionListener(this);
+    private void initializeFrame(Account account) {
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.account = account;
+        zoo = new Zoo();
+        jsonReaderAuto = new JsonReaderAuto(AUTO_FILE);
+        jsonWriterAuto = new JsonWriter(AUTO_FILE);
+        autoLoad();
 
-        panel.add(save);
-        panel.add(load);
+        this.setSize(WIDTH, HEIGHT);
+        this.setVisible(true);
+        this.setBackground(new Color(126, 166, 96));
     }
+
 
     //EFFECTS: sets the welcome label and returns it.
     private JLabel setWelcomeLabel() {
@@ -97,60 +95,21 @@ public class WildlifeRescueUI extends JFrame implements ActionListener {
         welcomeString.setVerticalAlignment(SwingConstants.TOP);
         welcomeString.setHorizontalAlignment(JLabel.CENTER);
         welcomeString.setForeground(null);
-        welcomeString.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 15));
-        welcomeString.setForeground(new Color(51, 94, 17));
+        welcomeString.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+        welcomeString.setForeground(Color.WHITE);
         return welcomeString;
+    }
+
+    private JPanel initializeSideBar(JLabel welcomeString) {
+        sideBar = new SideBarPanel(this, account, zoo, welcomeString, masterPanel, cardLayout, grid);
+        return sideBar;
     }
 
     //EFFECTS: sets the grid JPanel.
     private SpeciesPanel setGridPanel() {
-        SpeciesPanel grid =  new SpeciesPanel(this, account, zoo);
+        SpeciesPanel grid =  new SpeciesPanel(this, account, zoo, masterPanel, cardLayout);
         return grid;
     }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        Object source = e.getSource();
-        if (source == save) {
-            this.saveFile();
-        } else if (source == load) {
-            this.loadFile();
-        }
-        else {
-            handleAnimalButtons(new WildlifeRescueUI(account), e);
-        }
-    }
-
-    public void handleAnimalButtons(WildlifeRescueUI parent, ActionEvent e) {
-    grid.handleActions(new WildlifeRescueUI(account), e);
-    }
-
-    private void saveFile() {
-        try {
-            jsonWriter.openFile();
-            jsonWriter.writeToFile(account);
-            jsonWriter.close();
-            //System.out.println("Saved " + account.getUsername() + " to " + FILENAME);
-        } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "File Not Found.", null,
-                    JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void loadFile() {
-        try {
-            account = jsonReader.read();
-            System.out.println("Loaded " + account.getUsername() + "'s account from " + FILENAME);
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "File Not Found.", null,
-                    JOptionPane.ERROR_MESSAGE);
-        } catch (NotValidCardException e) {
-            JOptionPane.showMessageDialog(null, "Invalid card.", null,
-                    JOptionPane.ERROR_MESSAGE);
-
-        }
-    }
-
 
     //MODIFIES: this
     //EFFECTS: load the user's favorites list from file.
@@ -163,11 +122,36 @@ public class WildlifeRescueUI extends JFrame implements ActionListener {
         }
     }
 
+    private void initializePanels() {
+        favoritesPanel = new FavoritesPanel(grid);
+        donatedToPanel = new DonatedToPanel();
+        criticalPanel = new CriticalPanel();
+        endangeredPanel = new EndangeredPanel();
+        vulnerablePanel = new VulnerablePanel();
+    }
+
+    private void addPanelsToMasterPanel() {
+        masterPanel.add(scrollPane, "1");
+        masterPanel.add(favoritesPanel, "2");
+        masterPanel.add(donatedToPanel,"3");
+        masterPanel.add(criticalPanel, "4");
+        masterPanel.add(endangeredPanel, "5");
+        masterPanel.add(vulnerablePanel, "6");
+    }
+
     public JSplitPane getDummyPane() {
         return dummyPane;
     }
 
+    public JScrollPane getSpeciesScrollPane() {
+        return scrollPane;
+    }
+
     public JPanel getSideBar() {
         return sideBar;
+    }
+
+    public JPanel getMasterPanel() {
+        return masterPanel;
     }
 }
