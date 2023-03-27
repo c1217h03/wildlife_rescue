@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+//class that represents the sidebar.
 public class SideBarPanel extends JPanel implements ActionListener {
     private Account account;
     private Zoo zoo;
@@ -42,6 +43,7 @@ public class SideBarPanel extends JPanel implements ActionListener {
 
     private static final String FILENAME = "./data/saved.json";
 
+    //EFFECTS: constructs a sidebar panel.
     public SideBarPanel(WildlifeRescueUI parentFrame, Account account, Zoo zoo, JLabel welcomeString, JPanel master,
                         CardLayout cl, SpeciesPanel grid) {
         super();
@@ -64,6 +66,7 @@ public class SideBarPanel extends JPanel implements ActionListener {
         initializeOtherButtons(this);
     }
 
+    //EFFECTS: initializes the buttons on the sidebar.
     public void initializeOtherButtons(JPanel panel) {
         species = new JButton("Species");
         species.addActionListener(this);
@@ -82,6 +85,7 @@ public class SideBarPanel extends JPanel implements ActionListener {
         addButtons(panel);
     }
 
+    //EFFECTS: initializes the buttons that correlate to showing a list of animals.
     private void initializeListButtons() {
         favorites = new JButton("Favorites");
         favorites.addActionListener(this);
@@ -104,6 +108,7 @@ public class SideBarPanel extends JPanel implements ActionListener {
         vulnerable.setHorizontalAlignment(SwingConstants.CENTER);
     }
 
+    //EFFECTS: adds the buttons to the sidebar panel.
     private void addButtons(JPanel panel) {
         panel.add(species);
         panel.add(save);
@@ -115,6 +120,7 @@ public class SideBarPanel extends JPanel implements ActionListener {
         panel.add(vulnerable);
     }
 
+    //EFFECTS: manages the user actions.
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
@@ -139,10 +145,12 @@ public class SideBarPanel extends JPanel implements ActionListener {
         }
     }
 
+    //EFFECTS: jumps to the species panel
     private void handleSpecies() {
         cards.first(master);
     }
 
+    //EFFECTS: jumps to the favorite panel
     private void handleFavorites() {
         FavoritesPanel panel = new FavoritesPanel(grid);
 
@@ -156,6 +164,7 @@ public class SideBarPanel extends JPanel implements ActionListener {
         cards.show(master, "2");
     }
 
+    //EFFECTS: jumps to the donated to panel.
     private void handleDonated() {
         DonatedToPanel panel = new DonatedToPanel();
         for (Animal animal : this.account.getDonatedTo()) {
@@ -168,6 +177,7 @@ public class SideBarPanel extends JPanel implements ActionListener {
         cards.show(master, "3");
     }
 
+    //EFFECTS: jumps to the critical panel
     private void handleStatus(String status) {
         CriticalPanel panel = new CriticalPanel();
         for (Animal animal : animalList) {
@@ -182,6 +192,7 @@ public class SideBarPanel extends JPanel implements ActionListener {
         cards.show(master, "4");
     }
 
+    //EFFECTS jumps to the endangered panel.
     private void handleEndangered() {
         CriticalPanel panel = new CriticalPanel();
         for (Animal animal : animalList) {
@@ -197,10 +208,12 @@ public class SideBarPanel extends JPanel implements ActionListener {
     }
 
 
+    //EFFECTS: handles action if the animal button was pressed.
     public void handleAnimalButtons(ActionEvent e) {
         grid.handleActions(e);
     }
 
+    //EFFECTS: saves the user's favorites and donated to list.
     private void saveFile() {
         try {
             jsonWriter.openFile();
@@ -212,9 +225,11 @@ public class SideBarPanel extends JPanel implements ActionListener {
         }
     }
 
+    //EFFECTS: loads the user's favorites and donated to list from file.
     private void loadFile() {
         try {
             this.account = jsonReader.read();
+            grid.setAccount(this.account);
             System.out.println("Loaded " + account.getUsername() + "'s account from " + FILENAME);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "File Not Found.", null,

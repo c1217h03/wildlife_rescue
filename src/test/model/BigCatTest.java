@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static model.Account.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 //represents a class for big cat testing
@@ -98,6 +98,21 @@ public class BigCatTest {
         assertEquals(species, "Big Cat");
         String status = json.getString("status");
         assertEquals(status, "V");
-
     }
+
+    @Test
+    public void testEquals() {
+        BigCat testBigCat = new BigCat("Snow Leopard", "V", "High Mountains", 5000);
+        assertTrue(snowLeopard.equals(testBigCat));
+        assertEquals(snowLeopard.hashCode(), testBigCat.hashCode());
+    }
+
+    @Test
+    public void testNotEquals() {
+        BigCat testBigCat = new BigCat("Snow Leopard", "V", "High Mountains", 5000);
+        assertFalse(tiger.equals(testBigCat));
+        assertNotEquals(tiger.hashCode(), testBigCat.hashCode());
+        assertFalse(snowLeopard.equals("Snow Leopard"));
+    }
+
 }

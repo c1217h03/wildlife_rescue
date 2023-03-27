@@ -3,8 +3,10 @@ package ui;
 import javax.swing.*;
 import java.awt.*;
 
+//class that represents the panel that shows the list of animals you donated to.
 public class DonatedToPanel extends JPanel {
 
+    //EFFECTS: constructs a donated to panel
     public DonatedToPanel() {
         super();
         this.setOpaque(true);
@@ -14,6 +16,6 @@ public class DonatedToPanel extends JPanel {
         this.setBackground(new Color(51, 94, 17));
         this.setVisible(true);
         this.setBounds(500, 900, 750, 900);
-        this.setLayout(new GridLayout(11, 1));
+        this.setLayout(new GridLayout(getComponentCount(), 1));
     }
 }

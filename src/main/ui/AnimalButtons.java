@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.util.HashMap;
 import java.util.Map;
 
+//class that represents a collection of animal buttons.
 public class AnimalButtons {
     private Map<String, AnimalButton> animalButtons;
     private AnimalButton tigerButton;
@@ -11,7 +12,7 @@ public class AnimalButtons {
     private AnimalButton giantPandaButton;
     private AnimalButton polarBearButton;
     private AnimalButton blackRhinoButton;
-    private AnimalButton sumatranrRhinoButton;
+    private AnimalButton sumatranRhinoButton;
     private AnimalButton sumatranElephantButton;
     private AnimalButton afElephantButton;
     private AnimalButton whaleSharkButton;
@@ -19,12 +20,14 @@ public class AnimalButtons {
     private AnimalButton narWhaleButton;
 
 
+    //EFFECTS: constructs an animal button
     public AnimalButtons() {
         this.animalButtons = new HashMap<>();
         initializeAnimalButtons();
         addButtonsToMap();
     }
 
+    //EFFECTS: initializes the animal buttons of all the species.
     private void initializeAnimalButtons() {
         tigerButton = new AnimalButton("./data/tigerC.png", null);
 
@@ -36,7 +39,7 @@ public class AnimalButtons {
 
         blackRhinoButton = new AnimalButton("./data/blackrhinoC.jpeg", null);
 
-        sumatranrRhinoButton = new AnimalButton("./data/sumatranrhinoC.jpeg", null);
+        sumatranRhinoButton = new AnimalButton("./data/sumatranrhinoC.jpeg", null);
 
         sumatranElephantButton = new AnimalButton("./data/sumatranelephantC.jpeg",
                 null);
@@ -50,19 +53,23 @@ public class AnimalButtons {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: adds the buttons to the map, with their name as a key.
     private void addButtonsToMap() {
         animalButtons.put("Tiger", tigerButton);
         animalButtons.put("Snow Leopard", snowLeopardButton);
         animalButtons.put("Giant Panda", giantPandaButton);
         animalButtons.put("Polar Bear", polarBearButton);
         animalButtons.put("Black Rhino", blackRhinoButton);
-        animalButtons.put("Sumatran Rhino", sumatranrRhinoButton);
+        animalButtons.put("Sumatran Rhino", sumatranRhinoButton);
         animalButtons.put("African Forest Elephant", afElephantButton);
         animalButtons.put("Sumatran Elephant", sumatranElephantButton);
         animalButtons.put("Beluga Whale", belugaWhaleButton);
         animalButtons.put("Whale Shark", whaleSharkButton);
         animalButtons.put("North Atlantic Right Whale", narWhaleButton);
     }
+
+    //getters:
 
     public Map<String, AnimalButton> getAnimalButtons() {
         return animalButtons;

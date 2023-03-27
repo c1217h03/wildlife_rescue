@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static model.Account.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 //represents a class for elephant testing
@@ -99,4 +99,22 @@ public class ElephantTest {
         assertEquals(status, "CE");
 
     }
+
+    @Test
+    public void testEquals() {
+        Elephant testElephant = new Elephant("Sumatran Elephant", "CE",
+                "Tropical Forests", 2400);
+        assertTrue(sElephant.equals(testElephant));
+        assertEquals(sElephant.hashCode(), testElephant.hashCode());
+    }
+
+    @Test
+    public void testNotEquals() {
+        Elephant testElephant = new Elephant("Sumatran Elephant", "CE",
+                "Tropical Forests", 2400);
+        assertFalse(afElephant.equals(testElephant));
+        assertNotEquals(afElephant.hashCode(), testElephant.hashCode());
+        assertFalse(sElephant.equals("Sumatran Elephant"));
+    }
+
 }

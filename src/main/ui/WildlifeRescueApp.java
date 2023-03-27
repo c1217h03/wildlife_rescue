@@ -1,11 +1,7 @@
 package ui;
 
-import model.*;
-
-import javax.swing.text.InternationalFormatter;
-
 //represents the class that starts the program.
-public class Main {
+public class WildlifeRescueApp {
 
 //    private static InfoManager info;
 

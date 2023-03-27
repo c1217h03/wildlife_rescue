@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static model.Account.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 //represents a class for bear testing
 public class BearTest {
@@ -96,6 +96,20 @@ public class BearTest {
         assertEquals(species, "Bear");
         String status = json.getString("status");
         assertEquals(status, "V");
+    }
 
+    @Test
+    public void testEquals() {
+        Bear testBear = new Bear("Polar Bear", "V", "Arctic Ocean", 265000);
+        assertTrue(polarBear.equals(testBear));
+        assertEquals(testBear.hashCode(), polarBear.hashCode());
+    }
+
+    @Test
+    public void testNotEquals() {
+        Bear testBear = new Bear("Polar Bear", "V", "Arctic Ocean", 265000);
+        assertFalse(giantPanda.equals(testBear));
+        assertNotEquals(testBear.hashCode(), giantPanda.hashCode());
+        assertFalse(polarBear.equals("Polar Bear"));
     }
 }

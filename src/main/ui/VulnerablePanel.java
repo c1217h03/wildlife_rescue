@@ -3,7 +3,10 @@ package ui;
 import javax.swing.*;
 import java.awt.*;
 
+//class that represents a panel that shows all the vulnerable species.
 public class VulnerablePanel extends JPanel {
+
+    //EFFECTS: constructs a vulnerable panel.
     public VulnerablePanel() {
         super();
         this.setOpaque(true);

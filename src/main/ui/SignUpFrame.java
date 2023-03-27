@@ -8,47 +8,67 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//class that represents the sign-up frame.
 public class SignUpFrame extends JFrame implements ActionListener {
     JButton submitButton;
     JTextField nameField;
     JTextField cardField;
+    private JPanel panel;
 
+    //EFFECTS: constructs a sign up frame, with a name text field, card text field, and submit button.
     public SignUpFrame() {
         super("Sign up");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setLayout(new FlowLayout());
-        this.setVisible(true);
+//        this.setLayout(new GridLayout(2, 2));
+        this.setSize(450, 200);
+        this.setLocationRelativeTo(null);
 
-        JLabel name = new JLabel();
-        name.setText("Enter username:");
+        panel = new JPanel();
+        this.add(panel);
 
-        JLabel card = new JLabel();
-        card.setText("Enter card number:");
+        initializeNameField();
 
+        initializeCardField();
 
         submitButton = new JButton();
         submitButton.setLabel("Submit");
         submitButton.addActionListener(this);
+        submitButton.setBounds(10, 80, 80, 25);
+        panel.add(submitButton);
 
 
-        nameField = new JTextField();
-        nameField.setPreferredSize(new Dimension(150, 50));
-        nameField.addActionListener(this);
-
-        cardField = new JTextField();
-        cardField.setPreferredSize(new Dimension(150, 50));
-        cardField.addActionListener(this);
-
-
-        this.add(name);
-        this.add(nameField);
-        this.add(card);
-        this.add(cardField);
-        this.add(submitButton);
-        this.pack();
-
+        this.setVisible(true);
     }
 
+    //EFFECTS: constructs the name section of the sign-up frame.
+    private void initializeNameField() {
+        JLabel name = new JLabel();
+        name.setBounds(10, 20, 80, 25);
+        name.setText("Enter username:");
+        panel.add(name);
+
+        nameField = new JTextField(20);
+//        nameField.setPreferredSize(new Dimension(150, 50));
+        nameField.setBounds(100, 20, 165, 25);
+        nameField.addActionListener(this);
+        panel.add(nameField);
+    }
+
+    //EFFECTS: constructs the card section of the sign-up frame.
+    private void initializeCardField() {
+        JLabel card = new JLabel();
+        card.setText("Enter card number:");
+        card.setBounds(10, 50, 80, 25);
+        panel.add(card);
+
+        cardField = new JTextField(20);
+//        cardField.setPreferredSize(new Dimension(150, 50));
+        cardField.addActionListener(this);
+        cardField.setBounds(100, 50, 165, 25);
+        panel.add(cardField);
+    }
+
+    //EFFECTS: handles the user actions.
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == submitButton) {

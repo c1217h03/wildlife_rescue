@@ -3,6 +3,8 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
+import java.util.Objects;
+
 //represents an endangered animal with the amount of donations it has, name, population, species, status, and habitat
 public class Animal implements Writable {
     protected double donations = 0;
@@ -69,5 +71,28 @@ public class Animal implements Writable {
         json.put("status", status);
         json.put("species", species);
         return json;
+    }
+
+    //EFFECTS: overrides the equals method. Returns true if the given object is equal to the object it's called on.
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Animal)) {
+            return false;
+        }
+        Animal animal = (Animal) o;
+        return Double.compare(animal.population, population) == 0
+                && name.equals(animal.name)
+                && species.equals(animal.species)
+                && habitat.equals(animal.habitat);
+    }
+
+    //EFFECTS: overrides the hashCode method/
+    //         returns hashcode.
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, population, species, habitat);
     }
 }

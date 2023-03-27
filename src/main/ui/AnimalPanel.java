@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 
+//class that represents the panel beside the side bar that shows the animal's information.
 public class AnimalPanel extends JPanel implements ActionListener {
     private JLabel name;
     private JLabel status;
@@ -36,6 +37,7 @@ public class AnimalPanel extends JPanel implements ActionListener {
 
     private static final String AUTO_FILE = "./data/auto.json";
 
+    //EFFECTS: constructs an animal panel.
     public AnimalPanel(String animal, Zoo zoo, Account account) {
         super();
         this.setSize(WildlifeRescueUI.WIDTH, WildlifeRescueUI.HEIGHT);
@@ -61,6 +63,7 @@ public class AnimalPanel extends JPanel implements ActionListener {
 
     }
 
+    //EFFECTS: initializes labels for the panel.
     private void initializeLabels() {
         name = new JLabel("\n" + this.animal.getName() + "\n");
         name.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 50));
@@ -82,6 +85,7 @@ public class AnimalPanel extends JPanel implements ActionListener {
         donations.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 30));
     }
 
+    //EFFECTS: initializes the buttons in the animal panel.
     private void initializeButtons() {
         faves = new JButton("Add To Favorites");
         faves.addActionListener(this);
@@ -102,11 +106,14 @@ public class AnimalPanel extends JPanel implements ActionListener {
         this.add(remove);
     }
 
+    //EFFECTS: constructs a pop-up pane to enter the donation amount.
     private String setDonatingPane() {
         String amount = JOptionPane.showInputDialog(this, "Enter donation amount");
         return amount;
     }
 
+    //MODIFIES: this (animal)
+    //EFFECTS: manages the user actions performed.
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == faves) {
@@ -117,6 +124,12 @@ public class AnimalPanel extends JPanel implements ActionListener {
             account.addToDonatedTo(animal);
             donations.setText("\nCurrent Donations: " + animal.getDonation());
             autoSave();
+            ImageIcon paw = new ImageIcon("./data/pawnew.png");
+            JOptionPane.showMessageDialog(null,
+                    animal.getName() + "s thank you for your donations",
+                    null,
+                    JOptionPane.INFORMATION_MESSAGE,
+                    paw);
         } else if (e.getSource() == remove) {
             account.removeFromFavorites(animal);
         }

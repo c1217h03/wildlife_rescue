@@ -3,7 +3,10 @@ package ui;
 import javax.swing.*;
 import java.awt.*;
 
+//class that represents the panel beside the sidebar that shows the list of endangered species.
 public class EndangeredPanel extends JPanel {
+
+    //EFFECTS: constructs an endangered panel.
     public EndangeredPanel() {
         super();
         this.setOpaque(true);

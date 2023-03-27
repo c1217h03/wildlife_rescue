@@ -5,9 +5,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//class that represents the panel beside the sidebar that shows the list of species in the accounts favorites list.
 public class FavoritesPanel extends JPanel implements ActionListener {
     private SpeciesPanel grid;
 
+    //EFFECTS: constructs a favorites panel
     public FavoritesPanel(SpeciesPanel grid) {
         super();
         this.setOpaque(true);
@@ -17,10 +19,11 @@ public class FavoritesPanel extends JPanel implements ActionListener {
         this.setBackground(new Color(51, 94, 17));
         this.setVisible(true);
         this.setBounds(500, 900, 750, 900);
-        this.setLayout(new GridLayout(11, 1));
+        this.setLayout(new GridLayout(getComponentCount(), 1));
         this.grid = grid;
     }
 
+    //EFFECTS: handles the user action
     @Override
     public void actionPerformed(ActionEvent e) {
         grid.handleActions(e);

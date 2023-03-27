@@ -4,8 +4,6 @@ import model.Account;
 import model.NotValidCardException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.w3c.dom.ls.LSInput;
-import ui.InfoManager;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -53,7 +51,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -76,7 +74,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -101,7 +99,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -125,7 +123,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -147,7 +145,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -170,7 +168,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -197,7 +195,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -222,7 +220,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -250,7 +248,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -271,7 +269,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -299,7 +297,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -329,7 +327,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -359,7 +357,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -390,7 +388,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -418,7 +416,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -445,7 +443,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -472,7 +470,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -499,7 +497,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -526,7 +524,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -552,7 +550,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -579,7 +577,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -606,7 +604,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -633,7 +631,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -660,7 +658,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -687,7 +685,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -714,7 +712,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -741,7 +739,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -768,7 +766,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -793,7 +791,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -819,7 +817,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -846,7 +844,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -873,7 +871,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -900,7 +898,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -927,7 +925,7 @@ public class InfoManagerTest {
         System.setOut(printStream);
 
         try {
-            Main.main(null); // call the main method
+            WildlifeRescueApp.main(null); // call the main method
             fail();
         } catch (NullPointerException e) {
             //pass
@@ -957,7 +955,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -983,7 +981,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -1010,7 +1008,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -1041,7 +1039,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -1067,7 +1065,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -1093,7 +1091,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -1120,7 +1118,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -1147,7 +1145,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -1176,7 +1174,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -1201,7 +1199,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];
@@ -1228,7 +1226,7 @@ public class InfoManagerTest {
         PrintStream printStream = new PrintStream(baos);
         System.setOut(printStream);
 
-        Main.main(null); // call the main method
+        WildlifeRescueApp.main(null); // call the main method
 
         String[] lines = baos.toString().split(System.lineSeparator());
         String actual = lines[lines.length-1];

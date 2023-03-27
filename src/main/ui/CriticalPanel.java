@@ -3,7 +3,10 @@ package ui;
 import javax.swing.*;
 import java.awt.*;
 
+//class that represents the panel beside the sidebar that shows the critically endangered species.
 public class CriticalPanel extends JPanel {
+
+    //EFFECTS: constructs a critical panel.
     public CriticalPanel() {
         super();
         this.setOpaque(true);

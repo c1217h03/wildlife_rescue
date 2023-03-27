@@ -7,10 +7,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
 
+//class that represents an animal button.
 public class AnimalButton extends JButton {
     String name;
     String imageFile;
 
+    //EFFECTS: constructs an animal button with the given image.
     public AnimalButton(String image, String animal) {
         super(animal);
         this.name = animal;
@@ -24,6 +26,8 @@ public class AnimalButton extends JButton {
         this.setSize(800, 480);
     }
 
+    //EFFECTS: overrides the equals method for the animal button.
+    //         returns true if the given object is equal to the object the method is called on.
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -36,6 +40,7 @@ public class AnimalButton extends JButton {
         return imageFile == animalButton.imageFile;
     }
 
+    //EFFECTS: overrides the hashcode method, returns the hashcode.
     @Override
     public int hashCode() {
         return Objects.hash(imageFile);

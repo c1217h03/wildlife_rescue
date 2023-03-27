@@ -5,8 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static model.Account.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 //represents a class for marine animal testing
@@ -133,6 +132,22 @@ public class MarineAnimalTest {
         assertEquals(status, "CE");
 
     }
+
+    @Test
+    public void testEquals() {
+       MarineAnimal testMarine = new MarineAnimal("Whale Shark", "E", "Ocean", 200000);
+       assertTrue(whaleShark.equals(testMarine));
+       assertEquals(whaleShark.hashCode(), testMarine.hashCode());
+    }
+
+    @Test
+    public void testNotEquals() {
+        MarineAnimal testMarine = new MarineAnimal("Whale Shark", "E", "Ocean", 200000);
+        assertFalse(belugaWhale.equals(testMarine));
+        assertFalse(belugaWhale.equals("Beluga Whale"));
+        assertNotEquals(belugaWhale.hashCode(), testMarine.hashCode());
+    }
+
 
 
 }

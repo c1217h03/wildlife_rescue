@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//class that represents the panel beside the sidebar that shows all the species.
 public class SpeciesPanel extends JPanel implements ActionListener {
     private Zoo zoo;
     private List<Animal> animalList;
@@ -37,6 +38,7 @@ public class SpeciesPanel extends JPanel implements ActionListener {
     private CardLayout cl;
 
 
+    //EFFECTS: constructs a species panel
     public SpeciesPanel(WildlifeRescueUI parent, Account account, Zoo zoo, JPanel master, CardLayout cards) {
         this.zoo = zoo;
         animalList = zoo.getAnimalList();
@@ -81,6 +83,7 @@ public class SpeciesPanel extends JPanel implements ActionListener {
         narWhaleButton.addActionListener(this);
     }
 
+    //EFFECTS: adds the buttons to the given panel.
     private void addButtons(JPanel panel) {
         panel.add(tigerButton);
         panel.add(snowLeopardButton);
@@ -96,11 +99,13 @@ public class SpeciesPanel extends JPanel implements ActionListener {
 
     }
 
+    //EFFECTS: jumps to the actionPerformed method of the species panel class.
     public void handleActions(ActionEvent e) {
         actionPerformed(e);
     }
 
 
+    //EFFECTS: manages the user actions.
     @Override
     public void actionPerformed(ActionEvent e) {
         AnimalButton source = (AnimalButton) e.getSource();
@@ -117,6 +122,7 @@ public class SpeciesPanel extends JPanel implements ActionListener {
         }
     }
 
+    //EFFECTS: handles action if a big cat button was clicked.
     private void handleBigCats(ActionEvent e) {
         AnimalButton source = (AnimalButton) e.getSource();
         AnimalPanel panel = null;
@@ -131,6 +137,7 @@ public class SpeciesPanel extends JPanel implements ActionListener {
 
     }
 
+    //EFFECTS: handles action if a bear button was clicked.
     private void handleBears(ActionEvent e) {
         AnimalButton source = (AnimalButton) e.getSource();
         AnimalPanel panel = null;
@@ -144,6 +151,7 @@ public class SpeciesPanel extends JPanel implements ActionListener {
         cl.show(masterPanel, "7");
     }
 
+    //EFFECTS: handles action if a rhino button was clicked.
     private void handleRhinos(ActionEvent e) {
         AnimalButton source = (AnimalButton) e.getSource();
         AnimalPanel panel = null;
@@ -157,6 +165,7 @@ public class SpeciesPanel extends JPanel implements ActionListener {
         cl.show(masterPanel, "7");
     }
 
+    //EFFECTS: handles action if an elephant button was clicked.
     private void handleElephants(ActionEvent e) {
         AnimalButton source = (AnimalButton) e.getSource();
         AnimalPanel panel = null;
@@ -170,6 +179,7 @@ public class SpeciesPanel extends JPanel implements ActionListener {
         cl.show(masterPanel, "7");
     }
 
+    //EFFECTS: handles action if a marine animal button was clicked.
     private void handleMarine(ActionEvent e) {
         AnimalButton source = (AnimalButton) e.getSource();
         AnimalPanel panel = null;
@@ -183,6 +193,11 @@ public class SpeciesPanel extends JPanel implements ActionListener {
         panel.setVisible(true);
         masterPanel.add(panel, "7");
         cl.show(masterPanel, "7");
+    }
+
+    //EFFECTS: sets the account to the given account.
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
 }

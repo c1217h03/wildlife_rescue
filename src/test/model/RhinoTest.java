@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static model.Account.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 //represents a class for rhino testing
 public class RhinoTest {
@@ -98,4 +98,20 @@ public class RhinoTest {
         assertEquals(status, "CE");
 
     }
+
+    @Test
+    public void testEquals() {
+        Rhino testRhino = new Rhino("Black Rhino", "CE", "Savannah", 5500);
+        assertTrue(blackRhino.equals(testRhino));
+        assertEquals(blackRhino.hashCode(), testRhino.hashCode());
+    }
+
+    @Test
+    public void testNotEquals() {
+        Rhino testRhino = new Rhino("Black Rhino", "CE", "Savannah", 5500);
+        assertFalse(sumatranRhino.equals(testRhino));
+        assertFalse(blackRhino.equals("Black Rhino"));
+        assertNotEquals(sumatranRhino.hashCode(), testRhino.hashCode());
+    }
+
 }
