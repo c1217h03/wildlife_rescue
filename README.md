@@ -31,7 +31,7 @@ like myself to assist other creatures in need that aren't physically within our 
 - as a user, I want to sign up to my account and add my card details.
 
 
-#Instructions for Grader:
+## Instructions for Grader:
 - to add the animal click the "Add To Favorites" button in the animal's page.
 - to remove the animal from your favorites list click the "Remove From Favorites" button in the animal's page.
 - to see the Favorites list, click the "Favorites" button on the sidebar.
