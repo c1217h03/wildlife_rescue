@@ -83,10 +83,7 @@ public class Animal implements Writable {
             return false;
         }
         Animal animal = (Animal) o;
-        return Double.compare(animal.population, population) == 0
-                && name.equals(animal.name)
-                && species.equals(animal.species)
-                && habitat.equals(animal.habitat);
+        return name.equals(animal.name);
     }
 
     //EFFECTS: overrides the hashCode method/
