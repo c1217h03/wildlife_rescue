@@ -6,11 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 //class that represents the panel beside the sidebar that shows the list of species in the accounts favorites list.
-public class FavoritesPanel extends JPanel implements ActionListener {
+public class AnimalListPanel extends JPanel implements ActionListener {
     private SpeciesPanel grid;
 
     //EFFECTS: constructs a favorites panel
-    public FavoritesPanel(SpeciesPanel grid) {
+    public AnimalListPanel() {
         super();
         this.setOpaque(true);
         this.setSize(WildlifeRescueUI.WIDTH, WildlifeRescueUI.HEIGHT);
@@ -20,7 +20,6 @@ public class FavoritesPanel extends JPanel implements ActionListener {
         this.setVisible(true);
         this.setBounds(500, 900, 750, 900);
         this.setLayout(new GridLayout(getComponentCount(), 1));
-        this.grid = grid;
     }
 
     //EFFECTS: handles the user action

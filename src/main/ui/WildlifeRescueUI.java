@@ -1,18 +1,11 @@
 package ui;
 
 import model.*;
-import persistence.JsonReader;
 import persistence.JsonReaderAuto;
-import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
 //represents the entire GUI of the program.
 public class WildlifeRescueUI extends JFrame {
@@ -32,11 +25,11 @@ public class WildlifeRescueUI extends JFrame {
 
     private JSplitPane dummyPane;
     private SpeciesPanel grid;
-    private FavoritesPanel favoritesPanel;
-    private DonatedToPanel donatedToPanel;
-    private CriticalPanel criticalPanel;
-    private EndangeredPanel endangeredPanel;
-    private VulnerablePanel vulnerablePanel;
+    private AnimalListPanel favoritesPanel;
+    private AnimalListPanel donatedToPanel;
+    private AnimalListPanel criticalPanel;
+    private AnimalListPanel endangeredPanel;
+    private AnimalListPanel vulnerablePanel;
 
 
     private static final String AUTO_FILE = "./data/auto.json";
@@ -121,11 +114,11 @@ public class WildlifeRescueUI extends JFrame {
 
     //EFFECTS: initializes the panels
     private void initializePanels() {
-        favoritesPanel = new FavoritesPanel(grid);
-        donatedToPanel = new DonatedToPanel();
-        criticalPanel = new CriticalPanel();
-        endangeredPanel = new EndangeredPanel();
-        vulnerablePanel = new VulnerablePanel();
+        favoritesPanel = new AnimalListPanel();
+        donatedToPanel = new AnimalListPanel();
+        criticalPanel = new AnimalListPanel();
+        endangeredPanel = new AnimalListPanel();
+        vulnerablePanel = new AnimalListPanel();
     }
 
     //EFFECTS: adds the sub panels to the master panel which has a CardLayout.

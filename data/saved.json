@@ -1,0 +1,38 @@
+{
+    "favorites": [{
+        "habitat": "High Mountains",
+        "donations": 300,
+        "species": "Big Cat",
+        "name": "Snow Leopard",
+        "population": 5000,
+        "status": "V"
+    }],
+    "donatedto": [
+        {
+            "habitat": "High Mountains",
+            "donations": 300,
+            "species": "Big Cat",
+            "name": "Snow Leopard",
+            "population": 5000,
+            "status": "V"
+        },
+        {
+            "habitat": "African Forests",
+            "donations": 200,
+            "species": "Elephant",
+            "name": "African Forest Elephant",
+            "population": 415000,
+            "status": "CE"
+        },
+        {
+            "habitat": "Arctic Ocean",
+            "donations": 150,
+            "species": "Bear",
+            "name": "Polar Bear",
+            "population": 265000,
+            "status": "V"
+        }
+    ],
+    "card": "4444 4444 4444 4444",
+    "username": "Charmaine"
+}

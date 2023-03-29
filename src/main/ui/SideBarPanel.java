@@ -14,7 +14,6 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 //class that represents the sidebar.
 public class SideBarPanel extends JPanel implements ActionListener {
@@ -152,7 +151,7 @@ public class SideBarPanel extends JPanel implements ActionListener {
 
     //EFFECTS: jumps to the favorite panel
     private void handleFavorites() {
-        FavoritesPanel panel = new FavoritesPanel(grid);
+        AnimalListPanel panel = new AnimalListPanel();
 
         for (Animal a : this.account.getFavorites()) {
             JButton animalButton = animalButtons.getAnimalButton(a.getName());
@@ -166,7 +165,7 @@ public class SideBarPanel extends JPanel implements ActionListener {
 
     //EFFECTS: jumps to the donated to panel.
     private void handleDonated() {
-        DonatedToPanel panel = new DonatedToPanel();
+        AnimalListPanel panel = new AnimalListPanel();
         for (Animal animal : this.account.getDonatedTo()) {
             JButton animalButton = animalButtons.getAnimalButton(animal.getName());
             animalButton.addActionListener(this);
@@ -179,7 +178,7 @@ public class SideBarPanel extends JPanel implements ActionListener {
 
     //EFFECTS: jumps to the critical panel
     private void handleStatus(String status) {
-        CriticalPanel panel = new CriticalPanel();
+        AnimalListPanel panel = new AnimalListPanel();
         for (Animal animal : animalList) {
             if (animal.getStatus() == status) {
                 JButton animalButton = animalButtons.getAnimalButton(animal.getName());
@@ -194,7 +193,7 @@ public class SideBarPanel extends JPanel implements ActionListener {
 
     //EFFECTS jumps to the endangered panel.
     private void handleEndangered() {
-        CriticalPanel panel = new CriticalPanel();
+        AnimalListPanel panel = new AnimalListPanel();
         for (Animal animal : animalList) {
             if (animal.getStatus() == "CE" || animal.getStatus() == "E") {
                 JButton animalButton = animalButtons.getAnimalButton(animal.getName());
