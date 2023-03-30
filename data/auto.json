@@ -17,7 +17,7 @@
     },
     {
         "habitat": "Tropical Forests",
-        "donations": 0,
+        "donations": 10,
         "species": "Elephant",
         "name": "Sumatran Elephant",
         "population": 2400,
@@ -41,7 +41,7 @@
     },
     {
         "habitat": "Ocean",
-        "donations": 10,
+        "donations": 60,
         "species": "Marine Animal",
         "name": "Beluga Whale",
         "population": 150000,
@@ -65,7 +65,7 @@
     },
     {
         "habitat": "High Mountains",
-        "donations": 300,
+        "donations": 350,
         "species": "Big Cat",
         "name": "Snow Leopard",
         "population": 5000,

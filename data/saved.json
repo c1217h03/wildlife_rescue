@@ -1,12 +1,22 @@
 {
-    "favorites": [{
-        "habitat": "High Mountains",
-        "donations": 300,
-        "species": "Big Cat",
-        "name": "Snow Leopard",
-        "population": 5000,
-        "status": "V"
-    }],
+    "favorites": [
+        {
+            "habitat": "High Mountains",
+            "donations": 300,
+            "species": "Big Cat",
+            "name": "Snow Leopard",
+            "population": 5000,
+            "status": "V"
+        },
+        {
+            "habitat": "Savannah",
+            "donations": 0,
+            "species": "Rhino",
+            "name": "Black Rhino",
+            "population": 5500,
+            "status": "CE"
+        }
+    ],
     "donatedto": [
         {
             "habitat": "High Mountains",

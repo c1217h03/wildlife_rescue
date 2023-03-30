@@ -20,7 +20,7 @@ public class AnimalButtons {
     private AnimalButton narWhaleButton;
 
 
-    //EFFECTS: constructs an animal button
+    //EFFECTS: constructs a map that stores animal buttons and the names of the animal.
     public AnimalButtons() {
         this.animalButtons = new HashMap<>();
         initializeAnimalButtons();

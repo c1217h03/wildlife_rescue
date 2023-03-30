@@ -72,6 +72,7 @@ public class InfoManager {
     private JsonWriter jsonWriterAuto;
     private JsonReaderAuto jsonReaderAuto;
 
+    //EFFECTS: constructs an infomanager.
     public InfoManager() {
         input = new Scanner(System.in);
         runProgram = true;
