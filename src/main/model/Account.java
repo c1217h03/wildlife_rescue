@@ -28,6 +28,7 @@ public class Account implements Writable {
             this.card = card;
             this.favorites = new ArrayList<>();
             this.donatedto = new ArrayList<>();
+            EventLog.getInstance().logEvent(new Event("Created an account with name: " + this.username));
         } else {
             throw new NotValidCardException();
         }
@@ -38,7 +39,10 @@ public class Account implements Writable {
     //EFFECTS: donate the given amount to the given animal
     public void donate(int amount, Animal animal) {
         animal.addDonation(amount);
+        EventLog.getInstance().logEvent(new Event("Donated " + amount + " to " + animal.getName() + "s."));
         this.addToDonatedTo(animal);
+        EventLog.getInstance().logEvent(new Event("Added " + animal.getName()
+                + " to account's donated to list."));
     }
     
 
@@ -55,6 +59,7 @@ public class Account implements Writable {
     //EFFECTS: adds the given animal to the account's favourites list
     public void addToFavorites(Animal animal) {
         (this.favorites).add(animal);
+        EventLog.getInstance().logEvent(new Event("Added " + animal.getName() + " to favorites list."));
     }
 
 
@@ -63,6 +68,7 @@ public class Account implements Writable {
     //EFFECTS: removes the given animal from the account's favorites list.
     public void removeFromFavorites(Animal animal) {
         favorites.remove(animal);
+        EventLog.getInstance().logEvent(new Event("Removed " + animal.getName() + " from favorites list."));
     }
 
     //REQUIRES: card should be a string with 16 digits and a space character separating every 4 digits.

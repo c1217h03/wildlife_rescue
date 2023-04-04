@@ -1,11 +1,18 @@
 package ui;
 
 import model.*;
+import model.Event;
 import persistence.JsonReaderAuto;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.awt.event.WindowStateListener;
 import java.io.IOException;
+
+import static java.awt.event.WindowEvent.WINDOW_CLOSED;
 
 //represents the entire GUI of the program.
 public class WildlifeRescueUI extends JFrame {
@@ -37,6 +44,7 @@ public class WildlifeRescueUI extends JFrame {
     //EFFECTS: constructs a frame with sidebar and panels.
     public WildlifeRescueUI(Account account) {
         super("Wildlife Rescue");
+//        System.out.println("Program starting");
 
         initializeFrame(account);
         initializePanels();
@@ -60,11 +68,13 @@ public class WildlifeRescueUI extends JFrame {
         dummyPane.setDividerLocation(350);
         cardLayout.first(masterPanel);
         this.add(dummyPane);
+
+
     }
 
     //EFFECTS: initializes the frame
     private void initializeFrame(Account account) {
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.account = account;
         zoo = new Zoo();
         jsonReaderAuto = new JsonReaderAuto(AUTO_FILE);
@@ -74,6 +84,19 @@ public class WildlifeRescueUI extends JFrame {
         this.setVisible(true);
         this.setBackground(new Color(126, 166, 96));
         this.setLocationRelativeTo(null);
+
+        //SOURCE: https://stackoverflow.com/questions/60516720/java-how-to-print-message-when-a-jframe-is-closed
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                EventLog eventLog = EventLog.getInstance();
+                for (Event event : eventLog) {
+                    System.out.println(event.toString() + "\n");
+                }
+                System.exit(0);
+            }
+        });
     }
 
 
@@ -131,21 +154,5 @@ public class WildlifeRescueUI extends JFrame {
         masterPanel.add(vulnerablePanel, "6");
     }
 
-    //getters:
 
-    public JSplitPane getDummyPane() {
-        return dummyPane;
-    }
-
-    public JScrollPane getSpeciesScrollPane() {
-        return scrollPane;
-    }
-
-    public JPanel getSideBar() {
-        return sideBar;
-    }
-
-    public JPanel getMasterPanel() {
-        return masterPanel;
-    }
 }

@@ -1,48 +1,30 @@
 {
-    "favorites": [
-        {
-            "habitat": "High Mountains",
-            "donations": 300,
-            "species": "Big Cat",
-            "name": "Snow Leopard",
-            "population": 5000,
-            "status": "V"
-        },
+    "favorites": [{
+        "habitat": "Savannah",
+        "donations": 200,
+        "species": "Rhino",
+        "name": "Black Rhino",
+        "population": 5500,
+        "status": "CE"
+    }],
+    "donatedto": [
         {
             "habitat": "Savannah",
-            "donations": 0,
+            "donations": 200,
             "species": "Rhino",
             "name": "Black Rhino",
             "population": 5500,
             "status": "CE"
-        }
-    ],
-    "donatedto": [
-        {
-            "habitat": "High Mountains",
-            "donations": 300,
-            "species": "Big Cat",
-            "name": "Snow Leopard",
-            "population": 5000,
-            "status": "V"
-        },
-        {
-            "habitat": "African Forests",
-            "donations": 200,
-            "species": "Elephant",
-            "name": "African Forest Elephant",
-            "population": 415000,
-            "status": "CE"
         },
         {
             "habitat": "Arctic Ocean",
-            "donations": 150,
+            "donations": 200,
             "species": "Bear",
             "name": "Polar Bear",
             "population": 265000,
             "status": "V"
         }
     ],
-    "card": "4444 4444 4444 4444",
+    "card": "4444",
     "username": "Charmaine"
 }

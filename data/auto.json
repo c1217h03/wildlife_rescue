@@ -1,7 +1,7 @@
 {"animalList": [
     {
         "habitat": "Savannah",
-        "donations": 0,
+        "donations": 200,
         "species": "Rhino",
         "name": "Black Rhino",
         "population": 5500,
@@ -9,7 +9,7 @@
     },
     {
         "habitat": "Tropical Forests",
-        "donations": 0,
+        "donations": 150,
         "species": "Rhino",
         "name": "Sumatran Rhino",
         "population": 80,
@@ -17,7 +17,7 @@
     },
     {
         "habitat": "Tropical Forests",
-        "donations": 10,
+        "donations": 120,
         "species": "Elephant",
         "name": "Sumatran Elephant",
         "population": 2400,
@@ -25,7 +25,7 @@
     },
     {
         "habitat": "African Forests",
-        "donations": 200,
+        "donations": 205,
         "species": "Elephant",
         "name": "African Forest Elephant",
         "population": 415000,
@@ -41,7 +41,7 @@
     },
     {
         "habitat": "Ocean",
-        "donations": 60,
+        "donations": 115,
         "species": "Marine Animal",
         "name": "Beluga Whale",
         "population": 150000,
@@ -49,7 +49,7 @@
     },
     {
         "habitat": "Ocean",
-        "donations": 0,
+        "donations": 200,
         "species": "Marine Animal",
         "name": "Whale Shark",
         "population": 200000,
@@ -57,7 +57,7 @@
     },
     {
         "habitat": "Rainforests",
-        "donations": 50,
+        "donations": 150,
         "species": "Big Cat",
         "name": "Tiger",
         "population": 4500,
@@ -65,7 +65,7 @@
     },
     {
         "habitat": "High Mountains",
-        "donations": 350,
+        "donations": 577,
         "species": "Big Cat",
         "name": "Snow Leopard",
         "population": 5000,
@@ -73,7 +73,7 @@
     },
     {
         "habitat": "Arctic Ocean",
-        "donations": 150,
+        "donations": 200,
         "species": "Bear",
         "name": "Polar Bear",
         "population": 265000,
@@ -81,7 +81,7 @@
     },
     {
         "habitat": "Chinese Forests",
-        "donations": 0,
+        "donations": 50,
         "species": "Bear",
         "name": "Giant Panda",
         "population": 1864,

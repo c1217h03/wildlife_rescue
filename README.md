@@ -38,3 +38,27 @@ like myself to assist other creatures in need that aren't physically within our 
 - to donate an amount to an animal, click the "Donate" button in the animal's page, then enter an amount.
 - you can save the state of my project by clicking "Save" button on the sidebar.
 - you can load the project from a file by clicking the "Load" button on the sidebar.
+
+## Phase 4: Task 2
+````
+Mon Apr 03 14:43:31 PDT 2023
+Created an account with name: Charmaine
+
+Mon Apr 03 14:43:33 PDT 2023
+Added Tiger to favorites list.
+
+Mon Apr 03 14:43:37 PDT 2023
+Added Snow Leopard to favorites list.
+
+Mon Apr 03 14:43:41 PDT 2023
+Donated 5 to African Forest Elephants.
+
+Mon Apr 03 14:43:41 PDT 2023
+Added African Forest Elephant to account's donated to list.
+
+Mon Apr 03 14:43:47 PDT 2023
+Added Whale Shark to favorites list.
+
+Mon Apr 03 14:43:50 PDT 2023
+Removed Tiger from favorites list.
+````
