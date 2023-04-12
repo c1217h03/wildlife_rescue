@@ -179,8 +179,8 @@ class AccountTest {
 
     @Test
     public void testAddToFavoritesAnimalOnce(){
-        acc1.addToFavorites(animal);
-        assertEquals(animal, (acc1.getFavorites()).get(0));
+        acc1.addToFavorites(tiger);
+        assertEquals(tiger, (acc1.getFavorites()).get(0));
     }
 
     public void testAddToFavoritesAnimalTwice(){

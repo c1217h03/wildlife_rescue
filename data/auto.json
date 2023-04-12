@@ -1,7 +1,7 @@
 {"animalList": [
     {
         "habitat": "Savannah",
-        "donations": 200,
+        "donations": 250,
         "species": "Rhino",
         "name": "Black Rhino",
         "population": 5500,
@@ -9,7 +9,7 @@
     },
     {
         "habitat": "Tropical Forests",
-        "donations": 150,
+        "donations": 200,
         "species": "Rhino",
         "name": "Sumatran Rhino",
         "population": 80,
@@ -17,7 +17,7 @@
     },
     {
         "habitat": "Tropical Forests",
-        "donations": 120,
+        "donations": 170,
         "species": "Elephant",
         "name": "Sumatran Elephant",
         "population": 2400,
@@ -57,7 +57,7 @@
     },
     {
         "habitat": "Rainforests",
-        "donations": 150,
+        "donations": 165,
         "species": "Big Cat",
         "name": "Tiger",
         "population": 4500,
@@ -65,7 +65,7 @@
     },
     {
         "habitat": "High Mountains",
-        "donations": 577,
+        "donations": 587,
         "species": "Big Cat",
         "name": "Snow Leopard",
         "population": 5000,

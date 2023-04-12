@@ -8,11 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.awt.event.WindowStateListener;
 import java.io.IOException;
-
-import static java.awt.event.WindowEvent.WINDOW_CLOSED;
 
 //represents the entire GUI of the program.
 public class WildlifeRescueUI extends JFrame {
@@ -29,8 +25,8 @@ public class WildlifeRescueUI extends JFrame {
     private JPanel masterPanel;
     private CardLayout cardLayout;
     private JScrollPane scrollPane;
-
     private JSplitPane dummyPane;
+
     private SpeciesPanel grid;
     private AnimalListPanel favoritesPanel;
     private AnimalListPanel donatedToPanel;
@@ -114,13 +110,13 @@ public class WildlifeRescueUI extends JFrame {
 
     //EFFECTS: sets the sidebar of the frame
     private JPanel initializeSideBar(JLabel welcomeString) {
-        sideBar = new SideBarPanel(this, account, zoo, welcomeString, masterPanel, cardLayout, grid);
+        sideBar = new SideBarPanel(account, zoo, welcomeString, masterPanel, cardLayout, grid);
         return sideBar;
     }
 
     //EFFECTS: sets the grid JPanel.
     private SpeciesPanel setGridPanel() {
-        SpeciesPanel grid =  new SpeciesPanel(this, account, zoo, masterPanel, cardLayout);
+        SpeciesPanel grid =  new SpeciesPanel(account, zoo, masterPanel, cardLayout);
         return grid;
     }
 

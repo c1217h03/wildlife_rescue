@@ -8,15 +8,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 //class that represents the panel beside the sidebar that shows all the species.
 public class SpeciesPanel extends JPanel implements ActionListener {
     private Zoo zoo;
     private List<Animal> animalList;
-    private WildlifeRescueUI parentFrame;
     private Account account;
 
     private AnimalButtons animalButtons;
@@ -39,11 +36,10 @@ public class SpeciesPanel extends JPanel implements ActionListener {
 
 
     //EFFECTS: constructs a species panel
-    public SpeciesPanel(WildlifeRescueUI parent, Account account, Zoo zoo, JPanel master, CardLayout cards) {
+    public SpeciesPanel(Account account, Zoo zoo, JPanel master, CardLayout cards) {
         this.zoo = zoo;
         animalList = zoo.getAnimalList();
         this.animalButtons = new AnimalButtons();
-        parentFrame = parent;
         this.account = account;
         this.masterPanel = master;
         this.cl = cards;

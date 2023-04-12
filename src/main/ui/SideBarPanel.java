@@ -38,15 +38,13 @@ public class SideBarPanel extends JPanel implements ActionListener {
     private JsonReader jsonReader;
 
     private SpeciesPanel grid;
-    private WildlifeRescueUI parentFrame;
 
     private static final String FILENAME = "./data/saved.json";
 
     //EFFECTS: constructs a sidebar panel.
-    public SideBarPanel(WildlifeRescueUI parentFrame, Account account, Zoo zoo, JLabel welcomeString, JPanel master,
+    public SideBarPanel(Account account, Zoo zoo, JLabel welcomeString, JPanel master,
                         CardLayout cl, SpeciesPanel grid) {
         super();
-        this.parentFrame = parentFrame;
         this.grid = grid;
         this.account = account;
         this.zoo = zoo;

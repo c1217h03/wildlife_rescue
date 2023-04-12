@@ -62,3 +62,15 @@ Added Whale Shark to favorites list.
 Mon Apr 03 14:43:50 PDT 2023
 Removed Tiger from favorites list.
 ````
+
+## Phase 4: Task 3
+
+There are several ways I would like to refactor my code. The most prominent changes I would make is to change the 
+classes Zoo and AnimalButtons have the Iterator pattern by making the classes implement Iterable<E>, where Zoo would implement Iterable<Animal> and AnimalButtons would implement Iterable<AnimalButton>. By doing so, classes can just have 
+associations with one of these two classes and not have to have a list of Animal or AnimalButton. For example, in the
+SpeciesPanel, from the UML diagram it can be seen that the class SpeciesPanel has associations with a collection of 
+Animal and an association with Zoo. By implementing the iterator pattern, the SpeciesPanel could just have an 
+association with Zoo instead of with Animal and instead of having to get the list of Animals in Zoo, Zoo itself can be
+iterated and used.
+
+

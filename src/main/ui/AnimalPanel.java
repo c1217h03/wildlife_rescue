@@ -20,11 +20,6 @@ public class AnimalPanel extends JPanel implements ActionListener {
     private JLabel habitat;
     private JLabel donations;
 
-    private JOptionPane donatingPane;
-
-    private JPanel masterPanel;
-    private CardLayout cl;
-
     private JButton faves;
     private JButton donate;
     private JButton remove;
